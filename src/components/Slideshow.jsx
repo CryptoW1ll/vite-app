@@ -3,7 +3,7 @@ import Button from './Button';
 
 function Slideshow() {
   // List of image sources
-  const images = ['logo192.png', 'logo193.png', 'logo194.png'];
+  const images = ['logo192.png', 'logo193.png', 'logo194.png', 'NAV_Training.jpg', 'NAV_Training1.jpg', 'NAV_Training2.jpg', 'NAV_Training3.jpg','NAV_Training4.jpg' ];
 
   const [currentImage, setCurrentImage] = useState(0);
 
