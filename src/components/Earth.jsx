@@ -73,6 +73,10 @@ return () => {
       specular: new THREE.Color("grey"),
     });
     const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
+
+    // set rotation.y :earthMeshRef.current.rotation.y
+    earthMesh.rotation.x = -0.6;
+    earthMesh.rotation.y = 2;
     scene.add(earthMesh);
     return earthMesh;
   }
