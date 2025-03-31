@@ -70,8 +70,8 @@ function Stand(props) {
   } = props;
 
   const [key, setKey] = useState(retryCount);
-  const [hovered, setHover] = useState(false);
-  const [active, setActive] = useState(false);
+  //const [hovered, setHover] = useState(false);
+  //const [active, setActive] = useState(false);
 
   if (!modelPath) {
     console.error("Coin component requires a modelPath prop");
