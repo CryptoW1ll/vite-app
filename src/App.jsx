@@ -24,11 +24,12 @@ const router = createBrowserRouter([{
   path: "/projects",
   element: <Project />,
 },
-// {
-//   path: "/projects/:projectId",
-//   element: <ProjectDetails />,
+{
+   path: "/projects/:projectId",
+   element: <Project />,
+   //element: <ProjectDetails />,
 
-// },
+},
 ]);
 
 function App(){
@@ -36,9 +37,9 @@ function App(){
     <div className="min-h-screen flex flex-col">
       <div className="flex-grow">
         <Navbar />
-        {/* <React.StrictMode> */}
+        <React.StrictMode>
           <RouterProvider router={router} />
-        {/* </React.StrictMode> */}
+        </React.StrictMode>
       </div>
       <Footer />
     </div>

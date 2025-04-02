@@ -9,8 +9,8 @@ export default function About() {
 
             <div className="scene-container relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8" id="">
                 <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">About Me</h1>
-                <p> Hi, I'm <strong>[Your Name]</strong>, a <strong>[Your Profession]</strong> with a passion for <strong>[Your Specialization]</strong>.
-                    With a background in <strong>[mention relevant experience]</strong>, I love creating <strong>[mention what you build or do]</strong>.</p>
+                <p> Hi, I'm <strong>Will Fowlds</strong>, a <strong>Developer</strong> with a passion for <strong>Game Development</strong>.
+                    With a background in <strong>C#, Unity Engine</strong>, I love creating <strong>unique gaming experiences.</strong>.</p>
             </div>
             {/* <div className="scene-container" id="">
                 <Coinstand/>

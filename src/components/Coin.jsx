@@ -27,7 +27,8 @@ function CoinModel({ modelPath, hovered, active, ...props }) {
     if (active) {
       //targetRotation.current += Math.PI * 2; // (360°)
       targetRotation.current += Math.PI;       // (180°)
-      flipSpeed.current = 0.05; 
+      //flipSpeed.current = 0.05;
+      flipSpeed.current = 0.1;  
     }
   }, [active]);
 
