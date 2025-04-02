@@ -1,53 +1,33 @@
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import React, { useRef, useState, Suspense } from 'react';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
+import { Color } from "three"; //import * as THREE from 'three';
 import { useErrorBoundary } from 'use-error-boundary';
 import { PCFSoftShadowMap } from 'three';
 import Coin from "./Coin.jsx";
 import {ErrorFallback, LoadingFallback} from "./Coin.jsx"
 
-// D.R.Y Violation: Found in Coin.jsx
-/*function ErrorFallback({ error }) {
-  return (
-    <div>
-      <h2>An error occurred:</h2>
-      <p>{error.message}</p>
-    </div>
-  );
-}*/
-
-// D.R.Y Violation: Found in Coin.jsx
-/*function LoadingFallback() {
-    return (
-      <mesh>
-        <boxGeometry args={[0.5, 0.5, 0.5]} />
-        <meshStandardMaterial color="gray" />
-      </mesh>
-    );
-  }*/
-
-
-function Box(props) {
-  const meshRef = useRef();
-  const [hovered, setHover] = useState(false);
-  const [active, setActive] = useState(false);
+// function Box(props) {
+//   const meshRef = useRef();
+//   const [hovered, setHover] = useState(false);
+//   const [active, setActive] = useState(false);
   
-  // useFrame((state, delta) => (meshRef.current.rotation.x += delta));
+//   // useFrame((state, delta) => (meshRef.current.rotation.x += delta));
   
-  return (
-    <mesh
-      {...props}
-      ref={meshRef}
-      scale={active ? 1.5 : 1}
-      onClick={(event) => setActive(!active)}
-      onPointerOver={(event) => setHover(true)}
-      onPointerOut={(event) => setHover(false)}
-      castShadow>
-      <boxGeometry args={[0.5, 0.5, 0.5]} />
-      <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
-    </mesh>
-  );
-}
+//   return (
+//     <mesh
+//       {...props}
+//       ref={meshRef}
+//       scale={active ? 1.5 : 1}
+//       onClick={(event) => setActive(!active)}
+//       onPointerOver={(event) => setHover(true)}
+//       onPointerOut={(event) => setHover(false)}
+//       castShadow>
+//       <boxGeometry args={[0.5, 0.5, 0.5]} />
+//       <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
+//     </mesh>
+//   );
+// }
 
 // function Shadows(props) {
 //   const { viewport } = useThree();
@@ -130,13 +110,15 @@ export default function Coinstand() {
   ) : (
     <Canvas 
       fallback={<div>Sorry no WebGL supported!</div>}
+      scene={{ background: new Color(0x000000) }} 
       camera={{ position: [0, 2, 8], fov: 45 }}
       shadows={{
         type: PCFSoftShadowMap,
         bias: -0.0001
       }}
     >
-      <ambientLight intensity={1} />
+      <ambientLight intensity={0.2} />
+
       <spotLight 
         position={[15, 15, 15]} 
         angle={0.15} 
@@ -161,6 +143,7 @@ export default function Coinstand() {
       <Stand
         modelPath="/models/Stand1.fbx"
         position={[0, -0.7, 0]}
+        receiveShadow
         scale={0.03}
         rotation={[0, 0, 0]}
         />
@@ -222,14 +205,3 @@ export default function Coinstand() {
     </Canvas>
   );
 }
-
-    {/* <Box position={[-1, 0, 0]} />
-      <Box position={[0, 0, 0]} />
-      <Box position={[1, 0, 0]} />
-      <Box position={[-1, -1, 0]} />
-      <Box position={[0, -1, 0]} />
-      <Box position={[1, -1, 0]} />
-      
-      <Box position={[-1, 1, 0]} />
-      <Box position={[0, 1, 0]} />
-      <Box position={[1, 1, 0]} /> */}
