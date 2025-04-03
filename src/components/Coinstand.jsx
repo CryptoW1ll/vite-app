@@ -1,105 +1,117 @@
-import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
-import React, { useRef, useState, Suspense } from 'react';
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import React, { useRef, useState, useEffect, Suspense } from 'react';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 import { Color } from "three"; //import * as THREE from 'three';
+import * as THREE from 'three';
 import { useErrorBoundary } from 'use-error-boundary';
 import { PCFSoftShadowMap } from 'three';
 import Coin from "./Coin.jsx";
 import {ErrorFallback, LoadingFallback} from "./Coin.jsx"
 
-// function Box(props) {
-//   const meshRef = useRef();
-//   const [hovered, setHover] = useState(false);
-//   const [active, setActive] = useState(false);
+function StandModel({ modelPath, hovered, active, ...props }) {
+  const fbx = useLoader(FBXLoader, modelPath).clone();
   
-//   // useFrame((state, delta) => (meshRef.current.rotation.x += delta));
-  
-//   return (
-//     <mesh
-//       {...props}
-//       ref={meshRef}
-//       scale={active ? 1.5 : 1}
-//       onClick={(event) => setActive(!active)}
-//       onPointerOver={(event) => setHover(true)}
-//       onPointerOut={(event) => setHover(false)}
-//       castShadow>
-//       <boxGeometry args={[0.5, 0.5, 0.5]} />
-//       <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
-//     </mesh>
-//   );
-// }
-
-// function Shadows(props) {
-//   const { viewport } = useThree();
-//   return (
-//     <mesh receiveShadow scale={[viewport.width, viewport.height, 1]} {...props}>
-//       <planeGeometry />
-//       <shadowMaterial transparent opacity={0.5} />
-//     </mesh>
-//   );
-// }
-
-function Stand(props) {
-  const { ErrorBoundary } = useErrorBoundary();
-  const {
-    modelPath,
-    position = [0, 0, 0],
-    scale = 1,
-    rotation = [0, 0, 0],
-    retryCount = 0
-  } = props;
-
-  const [key, setKey] = useState(retryCount);
-  //const [hovered, setHover] = useState(false);
-  //const [active, setActive] = useState(false);
-
-  if (!modelPath) {
-    console.error("Coin component requires a modelPath prop");
-    return null;
-  }
-
-  function StandModel({ modelPath, hovered, active, ...props }) {
-    const fbx = useLoader(FBXLoader, modelPath).clone();
-    
-    return (
-      <group {...props}>
-        <primitive 
-          object={fbx} 
-          scale={active ? [1.2, 1.2, 1.2] : [1, 1, 1]}
-          //onPointerOver={props.onPointerOver}
-          //onPointerOut={props.onPointerOut}
-          //onClick={props.onClick}
-        />
-        {/* {hovered && (
-          <mesh position={[0, 0.5, 0]}>
-            <sphereGeometry args={[0.3, 16, 16]} />
-            <meshStandardMaterial color="hotpink" transparent opacity={0.5} />
-          </mesh>
-        )} */}
-      </group>
-    );
-  }
-
   return (
-    <ErrorBoundary
-      FallbackComponent={ErrorFallback}
-      onReset={() => setKey(prev => prev + 1)}
-      resetKeys={[key]}
-    >
-      <Suspense fallback={<LoadingFallback />}>
-        <StandModel
-          key={key}
-          modelPath={modelPath}
-          position={position}
-          scale={scale}
-          rotation={rotation}
-          //hovered={hovered}
-          //active={active}
-        />
-      </Suspense>
-    </ErrorBoundary>
+    <group {...props}>
+      <primitive 
+        object={fbx} 
+        scale={active ? [1.2, 1.2, 1.2] : [1, 1, 1]}
+        //onPointerOver={props.onPointerOver}
+        //onPointerOut={props.onPointerOut}
+        //onClick={props.onClick}
+      />
+      {/* {hovered && (
+        <mesh position={[0, 0.5, 0]}>
+          <sphereGeometry args={[0.3, 16, 16]} />
+          <meshStandardMaterial color="hotpink" transparent opacity={0.5} />
+        </mesh>
+      )} */}
+    </group>
   );
 }
+  
+// Synty Animated Character Test
+function FBXModel({ modelPath, scale, position, rotation }) {
+  const [model, setModel] = useState(null)
+  const [error, setError] = useState(null)
+  const group = useRef()
+  const mixer = useRef()
+
+  useEffect(() => {
+    let isMounted = true;
+    const loader = new FBXLoader();
+    loader.load(
+      modelPath,
+      (fbx) => {
+        if (!isMounted) return;
+  
+        console.log("Available Animations:", fbx.animations.map(a => a.name));
+  
+        const box = new THREE.Box3().setFromObject(fbx);
+        const center = box.getCenter(new THREE.Vector3());
+        fbx.position.set(-center.x, -center.y, -center.z);
+  
+        // fbx.traverse((child) => {
+        //   if (child.isMesh) {
+        //     child.material = child.material || new THREE.MeshStandardMaterial({
+        //       color: 0xcccccc,
+        //       roughness: 0.7,
+        //       metalness: 0.1,
+        //     });
+        //     child.castShadow = true;
+        //     child.receiveShadow = true;
+        //   }
+        // });
+
+        // fbx.traverse((child) => {
+        //   if (child.isMesh && child.name === "SM_Chr_Leader_Male_01_1") {
+        //     console.log("Applying animation to:", child.name);
+        //     mixer.current = new THREE.AnimationMixer(child);
+        //     mixer.current.clipAction(fbx.animations[0]).play();
+        //   }
+        // });
+
+        // fbx.traverse((child) => {
+        //   if (child.isSkinnedMesh) {
+        //     mixer.current = new THREE.AnimationMixer(child);
+        //     const action = mixer.current.clipAction(fbx.animations[0]);  
+        //     action.setEffectiveWeight(1.0);  
+        //     action.play();
+        //   }
+        // });
+  
+        if (fbx.animations.length > 0) {
+          const clip = THREE.AnimationClip.findByName(fbx.animations, "maximo.com") || fbx.animations[0];
+          mixer.current = new THREE.AnimationMixer(fbx);
+          mixer.current.clipAction(clip).play();
+          //console.log("Playing: " , clip.name);
+        }
+  
+        setModel(fbx);
+      },
+      undefined,
+      (err) => isMounted && setError(err)
+    );
+  
+    return () => {
+      isMounted = false;
+      if (mixer.current) mixer.current.stopAllAction();
+    };
+  }, [modelPath]);
+
+  useFrame((_, delta) => mixer.current?.update(delta))
+
+  if (error) return <ErrorFallback error={error} />
+  if (!model) return null
+
+  return (
+    <group ref={group} scale={scale} position={position} rotation={rotation}>
+      <primitive object={model} />
+    </group>
+  )
+}
+
+
 
 export default function Coinstand() {
   const { ErrorBoundary, didCatch, error } = useErrorBoundary();
@@ -129,6 +141,19 @@ export default function Coinstand() {
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
       />
+
+      <spotLight 
+              position={[-15, 15, 15]} 
+              angle={0.15} 
+              penumbra={1} 
+              decay={0} 
+              intensity={Math.PI}
+              castShadow // Enable shadow casting
+              shadow-mapSize-width={1024}
+              shadow-mapSize-height={1024}
+      />
+
+
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
       
       <mesh 
@@ -140,13 +165,22 @@ export default function Coinstand() {
         <meshStandardMaterial color="white" />
       </mesh>
 
-      <Stand
+      {/* <Stand
         modelPath="/models/Stand1.fbx"
         position={[0, -0.7, 0]}
         receiveShadow
         scale={0.03}
         rotation={[0, 0, 0]}
-        />
+        /> */}
+
+      <StandModel
+          modelPath="/models/Stand1.fbx"
+          position={[0, -0.7, 0]}
+          scale={0.03}
+          rotation={[0, 0, 0]}
+          //hovered={hovered}
+          //active={active}
+        />          
 
         {/*Top Row  */}
         <Coin 
@@ -168,13 +202,11 @@ export default function Coinstand() {
 
         {/*Middle Row  */}
         <Coin 
-            // modelPath="/models/SM_Icon_Coin_01.fbx" 
             modelPath="/models/Coin_asd.fbx" 
             position={[-1.3, 0, 0]} 
             scale={0.009} 
         />      
       <Coin 
-            // modelPath="/models/SM_Icon_Coin_01.fbx" 
             modelPath="/models/Coin_smo.fbx" 
             position={[0, 0, 0]} 
             scale={0.009} 
@@ -201,7 +233,22 @@ export default function Coinstand() {
             position={[1.3, -.7, 1.8]} 
             scale={0.009} 
         />
-      
+
+        {/* <FBXModel 
+          modelPath="/models/SM_Chr_Leader_Male_01.fbx"
+          scale={0.01}
+          position={[-4,-1, 0]}
+          rotation={[0, 0, 0]}
+          castShadow
+        /> */}
+
+      <FBXModel 
+          modelPath="/models/Salute.fbx"
+          scale={0.01}
+          position={[-2.2,-1, 2.6]}
+          rotation={[0, 13.5, 0]}
+          castShadow
+              />
     </Canvas>
   );
 }
