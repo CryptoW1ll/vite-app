@@ -120,6 +120,7 @@ export default function Coinstand() {
   return didCatch ? (
     <ErrorFallback error={error} />
   ) : (
+    <>
     <Canvas 
       fallback={<div>Sorry no WebGL supported!</div>}
       scene={{ background: new Color(0x000000) }} 
@@ -250,5 +251,20 @@ export default function Coinstand() {
           castShadow
               />
     </Canvas>
+
+    {/* <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                color: 'white',
+                fontSize: '2rem',
+                zIndex: 1
+            }}>
+                <div className="flex flex-col items-center justify-center h-full">
+                  <h1 className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-black sm:text-5xl"> Meshy AI</h1>
+                </div>
+      </div> */}
+    </>
   );
 }

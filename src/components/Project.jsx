@@ -23,7 +23,7 @@ export default function Project() {
       name: "Fugitive Apprehension Task Force",
       description:
         "An action-packed game where you track and capture fugitives in high-intensity missions.",
-      image: "https://via.placeholder.com/150",
+      image: "/images/Project_FugitiveApprehensionTaskForce(WIP).png",
       link: "https://example.com/project3",
     },
     {
