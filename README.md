@@ -15,3 +15,9 @@ If you are developing a production application, we recommend using TypeScript an
 npm install -D tailwindcss@3 postcss autoprefixer
 
 npx tailwindcss init -p
+
+# Debugging Github Pages 
+Bug: main.jsx cannot be found on deployed website. https://cryptow1ll.github.io/vite-app/
+run npm run build
+recommitted repo
+
