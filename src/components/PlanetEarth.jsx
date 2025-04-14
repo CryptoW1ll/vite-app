@@ -11,8 +11,6 @@ const planetScales = {
 
 const Moon = () => {
     const moonRef = useRef();
-
-    // textures
     const moonmap = useLoader(THREE.TextureLoader, "./texture/moonmap.jpg");
 
     return (
@@ -91,7 +89,8 @@ const Earth = () => {
 export default function PlanetEarth() {
   return (
     <>
-    <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
+    {/* <div style={{ position: 'relative', width: '100vw', height: '100vh' }}> */}
+    <div>
 
       <Canvas style={{
               //position: "absolute",
@@ -150,6 +149,7 @@ export default function PlanetEarth() {
                 <div className="flex flex-col items-center justify-center h-full">
                   <h1 className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-white sm:text-5xl"> Echelon Interactive Studio</h1>
                 </div>
+                
                 <div className="flex h-full flex-col items-center justify-center">
                   <div className="px-8 pt-8 sm:px-10 sm:pt-10 ">
                     {/* <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">Performance</p> */}
@@ -161,13 +161,76 @@ export default function PlanetEarth() {
                     <img
                       // className="max-lg:max-w-xs"
                       className="w-1/2 h-1/2 max-lg:max-w-xs"
-                      // src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-performance.png"
-                      // src="./images/Logo.png"
                       src="./ESLogo.png"
                       alt=""
                     />
                   </div>
               </div>
+      </div>
+
+      <div className="bg-lightgray-50 py-24 sm:py-32">
+        <p>The name Echelon reflects both its military and organisational origins. </p>
+        <p>In a military context, it signifies levels of command or formation of units and in an organisational context, 
+          it represents ranks or levels within a system or organisation. </p>
+        
+        <p> Serving the people of New Zealand was and is the greatest privilege of my life. </p>
+
+        <p> My service installed values including Commitment, Courage, Comradeship, and Integrity.
+            Military serviceman instills a high level of discipline, leadership, and a fresh perspective to game development, 
+            all of which influence the studio's innovative approach to creating compelling and immersive gaming experiences.</p>
+
+        
+            <h2>Vision and Goals</h2>
+            <p>ES envisions building a small but dedicated team in Invercargill capable of delivering multiple game projects annually, with the profits funnelled into larger-scale, long-term projects. The studio will embrace cutting-edge technologies such as Artificial Intelligence (AI), cloud computing, and automation to enhance development efficiency and creativity, streamlined business processes to allow the team to focus on creating fun and engaging games.
+            By 2026, ES aims to:</p>
+            <ul>
+              <li>Establish consistent revenue streams</li>
+              <li>Implement scalable operational systems to support growth</li>
+              <li>Expand our portfolio to include Augmented Reality (AR) </li>
+              <ul>
+                <li>Mixed Reality (MR)</li>
+                <li>Virtual Reality (VR)</li>
+                <li>Extended Reality (XR) experiences, making these technologies accessible to a broader audience.</li>
+              </ul>
+            </ul>
+      </div>
+
+      <div className="bg-gray-50 py-24 sm:py-32 text-black">
+        <h2>Our Mission</h2>
+        <p>ES aims to establish a thriving game development studio in Invercargill, Southland, to provide an option for local software developers 
+          and game designers live and work in the region. 
+
+        <h2>Primary Objectives</h2>
+        <ul>
+          <li>Develop and publish engaging games for PC, Android, and iOS platforms.</li>
+          {/* <li>Foster a culture of collaboration and knowledge sharing within the local community.</li> */}
+          <li>Utilise cutting-edge technologies to enhance game development processes.</li>
+          <li>Support local talent by providing job opportunities and mentorship.</li>
+          <li>Contribute to the local economy by establishing a sustainable business model.</li>
+          <li>Collaborate with the New Zealand Defence Force to develop software and tools for frontline operations.</li>
+          <li>Promote local culture and history through innovative gaming experiences.</li>
+          <li>Inspire and educate disadvantaged youth in technology and game development.</li>
+        </ul>
+        </p>
+
+        {/* Establish the business by 2025 and begin operations.
+        Complete three game prototypes within the first three months of business.
+        Partner with like-minded individuals and organisations on collaborative projects.
+        Launch a game on PC, Android and iOS within 12 months.
+        Achieve steady sales growth within 12 months of launch.
+        Create a sustainable business model by 2028, supporting long-term growth. */}
+
+        <h2>Long-Term Objectives</h2>
+        <p>Publish a virtual reality (VR) experience of Invercargill’s iconic water tower, celebrating 
+        local culture and history through cutting-edge technology.</p>
+        <p>Introduce augmented reality (AR), mixed reality (MR), and extended reality (XR) experiences within the next five years.</p>
+        
+        
+      </div>
+
+      <div className="bg-lightgray-50 py-24 sm:py-32">
+        <p>ES is committed to fostering a culture of continuous learning and improvement, encouraging team members to stay updated with the latest industry trends and technologies. This commitment to growth will not only enhance the team's skills but also ensure that the studio remains at the forefront of game development innovation.</p>
+        <p>By leveraging its military roots, ES aims to create a dynamic and disciplined work environment that encourages creativity, collaboration, and excellence in game development.</p>
       </div>
 
       <div className="bg-gray-50 py-24 sm:py-32">

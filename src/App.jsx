@@ -9,6 +9,7 @@ import NotFound404 from './components/NotFound404'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Project from './components/Project'
+import FATF from './components/FATF'
 
 
 const router = createBrowserRouter([{
@@ -28,6 +29,11 @@ const router = createBrowserRouter([{
    path: "/projects/:projectId",
    element: <Project />,
    //element: <ProjectDetails />,
+
+},
+{
+  path: "/fatf",
+  element: <FATF />,
 
 },
 ]);

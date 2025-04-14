@@ -219,11 +219,16 @@ export default function Coinstand() {
         />
 
         {/*Front Row  */}
-        <Coin 
+        {/* <Coin 
             modelPath="/models/Coin_otago.fbx" 
             position={[-1.3, -.7, 1.8]} 
             scale={0.009} 
-        />      
+        />       */}
+        <Coin 
+            modelPath="/models/cn_coin.fbx" 
+            position={[-1.3, -.7, 1.8]} 
+            scale={0.009} 
+        />  
       <Coin 
             modelPath="/models/Coin_nosu.fbx" 
             position={[0, -.7, 1.8]} 
