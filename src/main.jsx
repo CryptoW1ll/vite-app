@@ -6,10 +6,9 @@ import App from './App.jsx'
 
 //connects our HTML and React code!
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
-  //   <App />
-  // </StrictMode>,
-  <App />,
+  <StrictMode>
+    <App />
+  </StrictMode>
 )
 
 // This function logs web vitals to the console or sends them to an analytics endpoint
