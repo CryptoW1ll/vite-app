@@ -44,9 +44,7 @@ export default function About() {
                 <SkillBalanceBar LeftSkill="Technical" RightSkill="Non-Technical" value={70} />     
                 <SkillBalanceBar LeftSkill="Groups" RightSkill="One-on-One" value={70} />             
                 <SkillBalanceBar LeftSkill="Creative" RightSkill="Analytical" value={50} />
-                <SkillBalanceBar LeftSkill="Small talk" RightSkill="Deep talk" value={80} />
-                {/* <SkillBalanceBar LeftSkill="Process-Driven" RightSkill="Relationship-Driven" value={50} /> */}
-        
+                <SkillBalanceBar LeftSkill="Small talk" RightSkill="Deep talk" value={80} />       
 
                 <p><b>Strengths</b></p>
                 <p>Creative problem solver.</p>
