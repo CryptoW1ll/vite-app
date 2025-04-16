@@ -12,7 +12,6 @@ export default defineConfig({
       input: './index.html',
     }
   },
-  
   server: {
     open: true  // Automatically open browser
   }
