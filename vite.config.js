@@ -10,11 +10,6 @@ export default defineConfig({
     emptyOutDir: true,  // Clears the dist folder before each build
     rollupOptions: {
       input: './index.html',
-    },
-    output: {
-      entryFileNames: `[name].js`, // Force .js extension
-      chunkFileNames: `[name].js`,
-      assetFileNames: `[name].[ext]`
     }
   },
   
