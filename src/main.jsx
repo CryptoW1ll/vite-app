@@ -1,20 +1,36 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom"
 import './index.css'
-import App from './App.jsx'
-//import reportWebVitals from './components/reportWebVitals'; 
+import Homepage from './components/Homepage.jsx'
+import NotFound404 from './components/NotFound404'
+import About from './components/About'
+import Project from './components/Project'
+import FATF from './components/FATF'
+import Contact from './components/Contact.jsx'
+import Layout from './components/Layout.jsx'
 
-//connects our HTML and React code!
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    errorElement: <NotFound404 />,
+    children: [
+      { path: '/', element: <Homepage /> },
+      { path: 'about', element: <About /> },
+      { path: 'projects', element: <Project /> },
+      { path: 'projects/:projectId', element: <Project /> },
+      { path: 'fatf', element: <FATF /> },
+      { path: 'contact', element: <Contact /> },
+    ],
+  },
+])
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>
 )
-
-// This function logs web vitals to the console or sends them to an analytics endpoint
-//reportWebVitals(console.log);  // Replace console.log with your custom reporting function
-
-
-/*const container = document.getElementById("root");
-const root = createRoot(container);
-root.render(<App />);*/

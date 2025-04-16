@@ -117,9 +117,7 @@ export default function Coinstand() {
   const { ErrorBoundary, didCatch, error } = useErrorBoundary();
   //const coinstand = "/models/coinstand.fbx";
   
-  return didCatch ? (
-    <ErrorFallback error={error} />
-  ) : (
+  return didCatch ? ( <ErrorFallback error={error} />) : (
     <>
     <Canvas 
       fallback={<div>Sorry no WebGL supported!</div>}
@@ -226,7 +224,7 @@ export default function Coinstand() {
         />       */}
         <Coin 
             modelPath="/models/cn_coin.fbx" 
-            position={[-1.3, -.7, 1.8]} 
+            position={[-1.3, -.7, 1.8]}
             scale={0.009} 
         />  
       <Coin 

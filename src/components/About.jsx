@@ -35,8 +35,9 @@ export default function About() {
                 <SkillBalanceBar LeftSkill="Sensing" RightSkill="Intuitive" value={60} /> 
                 <SkillBalanceBar LeftSkill="Thinking" RightSkill="Feeling" value={20} />
                 <SkillBalanceBar LeftSkill="Judging" RightSkill="Perceiving" value={70} />
-                <p><b>Leadership Style: The Unconventional Leader</b></p>
-                <p>By create a culture of "think smart", innovation and open communication.</p>
+
+                <p><b>Unconventional Leadership Style</b></p>
+                <p>Promote "think smart", innovation and open communication.</p>
                 <p>Influencing others and empowering teams with responsibility, and a long-term strategic vision.</p>
                 <p>Building trust and rapport with individual team members.</p>
                 <p></p>
@@ -61,7 +62,10 @@ export default function About() {
             <div className="app-container">
 
                 <div className="scene-container relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8" id="">
-                    <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">About Me</h1>
+                    {/* <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">About Me</h1> */}
+                    <h1 className="mt-2 max-w-lg text-4xl font-semibold tracking-tight text-balance text-white sm:text-5xl">
+                        About me
+                    </h1>
                     <p> Hi, I'm <strong>Will Fowlds</strong>, a <strong>Developer</strong> with a passion for <strong>Game Development</strong>.
                         With a background in <strong>C#, Unity Engine</strong>, I love creating <strong>unique gaming experiences.</strong>.</p>
                 </div>
@@ -71,26 +75,41 @@ export default function About() {
 
                 {/* Experience Section */}
                 <div className="scene-container relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8 pointer-events-auto" id="">
-                    <h2 className="text-2xl font-semibold mb-4">Experience</h2>
+                    {/* <h2 className="text-2xl font-semibold mb-4">Experience</h2> */}
                     
 
-                    <h3>Education</h3>
-                    <p>2021: Level 4 Certificate in Small Business Management at the Southern Institute of Technology</p>
-                    <p>2022: Level 5, 6 papers from a Software Engineering Degree at Media Design School</p>
-                    <p>2023: First year student in Bachelors of Information Technology at the Southern Institute of Technology</p>
-                    <p>2024: Second year student in Bachelors of Information Technology at the Southern Institute of Technology</p>
-                    <p>2025: Third year student in Bachelors of Information Technology at the Southern Institute of Technology</p>
+                    <h2 className="text-2xl font-semibold mb-4">Education</h2>
+                    <ul className="list-disc ml-5">
+                        <li>2005: First year student in Bachelors of Information Technology at Otago Polytechnic</li>
+                        <li>2009 - 2019: Numerous Military and Leadership Courses</li>  
+                            <ul>
+                                <li>Blanchards Leadership Development Framework</li>
+                                <li>NZDF Lead Self Development Programme</li>
+                                <li>NZDF Lead Teams Development Programme</li>
+                                <li>NZDF Lead Leaders Development Programme</li>
+                            </ul>
+                        <li>2021: Level 4 Certificate in Small Business Management at the Southern Institute of Technology</li>
+                        <li>2022: Level 5, 6 papers from a Software Engineering Degree at Media Design School</li>
+                        <li>2023: First year student in Bachelors of Information Technology at the Southern Institute of Technology</li>
+                        <li>2024: Second year student in Bachelors of Information Technology at the Southern Institute of Technology</li>
+                        <li>2025: Third year student in Bachelors of Information Technology at the Southern Institute of Technology</li>
+                    </ul>
                     
                 </div>
 
                 <div className="scene-container relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8" id="">
                     <h2 className="text-2xl font-semibold mb-4">Military</h2>
 
-                    <p>2009: Joined The Royal New Zealand Navy as a Communications Analyst/ Electronic Warfare Specialist </p>
-                    <p>2014: Promoted to Leading Communications Analyst</p>
-                    <p>2016: Received High Duties Acknoledgement</p>
+                    <ul className="list-disc ml-5">
+                        <li>2009: Joined The Royal New Zealand Navy as a Communications Analyst/ Electronic Warfare Specialist</li>
+                        <li>2014: Promoted to Leading Communications Analyst</li>
+                        <li>2016: Received High Duties Acknowledgement</li>
+                    </ul>
 
-                    <p>While you swear and oath to the Monarchy, your oath is firmly to those men and woman standing beside you. 
+
+                    <div className="mt-2 text-lg tracking-tight text-white">    
+                  
+                        While you swear and oath to the Monarchy, your oath is firmly to those men and woman standing beside you. 
                         They to have sworn an oath to protect the people of New Zealand and the Commonwealth.
                         My sevice included an operation deployment to the Middle East, supporting to the New Zealand Defence Force and 
                         Coalition Forces. 
@@ -108,7 +127,7 @@ export default function About() {
                             never hide my distain for those in power who are influenced by lobbists for the military industial complex. Peace in the Middle East! Inshallah.
                             
                         </p>
-                    </p>
+                    </div>
 
                     <Coinstand/>
 
@@ -204,7 +223,7 @@ export default function About() {
                     <p>A short section about hobbies, interests, or what drives you. Helps visitors connect with you on a personal level.</p>           
                 </div>
 
-                <div className="scene-container relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8" id="">
+                {/* <div className="scene-container relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8" id="">
 
                     <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
                     <p>
@@ -214,24 +233,17 @@ export default function About() {
                         <li>Email: <a href="mailto:your.email@example.com" className="text-blue-500">your.email@example.com</a></li>
                         <li>LinkedIn: <a href="https://linkedin.com/in/yourprofile" className="text-blue-500">linkedin.com/in/yourprofile</a></li>
                     </ul>
-                </div>
+                </div> */}
 
 
-                <div className="relative overflow-hidden bg-white">
+                {/* <div className="relative overflow-hidden bg-white">
                     <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
                         
                     </div>
-                </div>
-
-                </div>
+                </div> */}
 
             </div>
-        
-    
-        
-
-
-
+            </div>
         </div>
     );
 }
