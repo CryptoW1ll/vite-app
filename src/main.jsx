@@ -1,3 +1,4 @@
+import React from 'react';
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {
@@ -28,10 +29,10 @@ const router = createBrowserRouter([
     ],
   },
 ],
-{
-  basename: '/vite-app/',
-}
-)
+  {
+    basename: import.meta.env.BASE_URL || '/' // Automatically matches Vite's base
+  }
+);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

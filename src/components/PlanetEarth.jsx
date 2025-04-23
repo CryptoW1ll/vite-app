@@ -1,6 +1,6 @@
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import * as THREE from "three";
 
 

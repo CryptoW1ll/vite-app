@@ -22,10 +22,15 @@ jobs:
         run: npm ci
 
       - name: Build project
-        run: npm run build
+        # run: npm run build
+        # env:
+        #   NODE_ENV: production
+        run: |
+          rm -rf dist
+          npm run build
         env:
-          NODE_ENV: production
-
+             # For GitHub Pages (subpath deployment)
+         VITE_BASE_URL: '/vite-app/'
       - name: Upload build files
         uses: actions/upload-artifact@v4
         with:
