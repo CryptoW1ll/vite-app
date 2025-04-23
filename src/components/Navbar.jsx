@@ -40,7 +40,7 @@ export default function Navbar() {
               <img
                 alt="Your Company"
                 // src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                src="./WFLogo.png"
+                src="./ESLogo.png"
 
                 className="h-8 w-auto"
               />

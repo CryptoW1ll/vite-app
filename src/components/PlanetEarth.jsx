@@ -90,20 +90,8 @@ export default function PlanetEarth() {
 
   return (
     <>
-    {/* <div style={{ position: 'relative', width: '100vw', height: '100vh' }}> */}
-    <div>
-
-      <Canvas style={{
-              //position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              zIndex: 0,
-              pointerEvents: "none", // allows clicks to pass through
-            }}
-
-            scene={{ background: new THREE.Color(0x000000) }}> 
+    {/* <div className="h-screen w-screen flex items-center justify-center bg-black"> */}
+      <Canvas className="w-full h-full" style={{ pointerEvents: "none"}}> 
 
         <PerspectiveCamera 
           makeDefault 
@@ -113,11 +101,6 @@ export default function PlanetEarth() {
           position={[0, 0, 5]} 
         />
         <ambientLight intensity={0} />
-        {/* <directionalLight 
-          position={[20, 15, 5]} 
-          intensity={3} 
-          color={0xffffff}/> */}
-
           <directionalLight
               position={[20, 15, 5]}
               intensity={3}
@@ -136,40 +119,7 @@ export default function PlanetEarth() {
         <Earth />
         <Atmosphere/>
       </Canvas>
-
-      {/* <div style={{
-                position: 'absolute',
-                top: '10%',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                color: 'white',
-                fontSize: '2rem',
-                zIndex: 1
-            }}>
-                <div className="flex flex-col items-center justify-center h-full">
-                  <h1 className="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-white sm:text-5xl"> Echelon Interactive Studio</h1>
-                </div>
-                
-                <div className="flex h-full flex-col items-center justify-center">
-                  <div className="px-8 pt-8 sm:px-10 sm:pt-10 ">
-                    <p className="mt-2 max-w-lg text-xlg text-gray-600 sm:text-center md:text-center max-lg:text-center">
-                      EAT, SLEEP, CODE, REPEAT
-                    </p>
-                  </div>
-                  <div className="flex flex-1 items-center justify-center px-8 max-lg:pt-10 max-lg:pb-12 sm:px-10 lg:pb-2">
-                    <img
-                      className="w-1/2 h-1/2 max-lg:max-w-xs"
-                      src="./ESLogo.png"
-                      alt=""
-                    />
-                  </div>
-              </div>
-      </div> */}
-
-      
-
-      
-    </div>
+    {/* </div> */}
     </>
   );
 }

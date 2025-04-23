@@ -1,6 +1,6 @@
 import React from "react";
 import Coinstand from "./Coinstand";
-import '../App.css';
+import '../index.css';
 import SkillBalanceBar from "./SkillBalanceBar";
 
 export default function About() {

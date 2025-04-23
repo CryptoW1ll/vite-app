@@ -20,11 +20,11 @@ const router = createBrowserRouter([
     errorElement: <NotFound404 />,
     children: [
       { path: '/', element: <Homepage /> },
-      { path: 'about', element: <About /> },
-      { path: 'projects', element: <Project /> },
-      { path: 'projects/:projectId', element: <Project /> },
-      { path: 'fatf', element: <FATF /> },
-      { path: 'contact', element: <Contact /> },
+      // { path: 'about', element: <About /> },
+      // { path: 'projects', element: <Project /> },
+      // { path: 'projects/:projectId', element: <Project /> },
+      // { path: 'fatf', element: <FATF /> },
+      // { path: 'contact', element: <Contact /> },
     ],
   },
 ])
