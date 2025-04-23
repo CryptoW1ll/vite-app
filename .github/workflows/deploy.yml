@@ -70,22 +70,3 @@ jobs:
       #   run: firebase deploy --only hosting
       #   env:
       #     GOOGLE_APPLICATION_CREDENTIALS: "${{ github.workspace }}/service-account.json"
-
-  deploy_gh_pages:
-    name: Deploy to GitHub Pages
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: production-files
-          path: ./dist
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
