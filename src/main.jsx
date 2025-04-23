@@ -27,7 +27,11 @@ const router = createBrowserRouter([
       // { path: 'contact', element: <Contact /> },
     ],
   },
-])
+],
+{
+  basename: '/vite-app/',
+}
+)
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

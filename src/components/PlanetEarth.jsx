@@ -11,7 +11,7 @@ const planetScales = {
 
 const Moon = () => {
     const moonRef = useRef();
-    const moonmap = useLoader(THREE.TextureLoader, "./texture/moonmap.jpg");
+    const moonmap = useLoader(THREE.TextureLoader, "./moonmap.jpg");
 
     return (
         <mesh ref={moonRef} position={[3,1,2.3]}>
@@ -58,9 +58,9 @@ const Earth = () => {
   const earthRef = useRef();
 
    // Load textures
-   const colorMap = useLoader(THREE.TextureLoader, "./texture/RenderData.png");
-   const bumpMap = useLoader(THREE.TextureLoader, "./texture/earthbump.jpg");
-   const specularMap = useLoader(THREE.TextureLoader, "./texture/specularmap.jpg");
+   const colorMap = useLoader(THREE.TextureLoader, "./RenderData.png");
+   const bumpMap = useLoader(THREE.TextureLoader, "./earthbump.jpg");
+   const specularMap = useLoader(THREE.TextureLoader, "./specularmap.jpg");
  
 
   // Rotate Earth on each frame

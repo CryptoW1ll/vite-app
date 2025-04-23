@@ -67,10 +67,10 @@ return () => {
   function createEarth(scene) {
     const earthGeometry = new THREE.SphereGeometry(planetScales.earth, 64, 64);
     const earthMaterial = new THREE.MeshPhongMaterial({
-      map: new THREE.TextureLoader().load("./texture/RenderData.png"),
-      bumpMap: new THREE.TextureLoader().load("./texture/earthbump.jpg"),
+      map: new THREE.TextureLoader().load("./RenderData.png"),
+      bumpMap: new THREE.TextureLoader().load(".//earthbump.jpg"),
       bumpScale: 1,
-      specularMap: new THREE.TextureLoader().load("./texture/specularmap.jpg"),
+      specularMap: new THREE.TextureLoader().load("./specularmap.jpg"),
       specular: new THREE.Color("grey"),
     });
     const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
@@ -85,7 +85,7 @@ return () => {
   function createMoon(scene, earthMesh) {
     const moonGeometry = new THREE.SphereGeometry(planetScales.moon, 64, 64);
     const moonMaterial = new THREE.MeshPhongMaterial({
-      map: new THREE.TextureLoader().load("./texture/moonmap.jpg"),
+      map: new THREE.TextureLoader().load("./moonmap.jpg"),
     });
     const moonMesh = new THREE.Mesh(moonGeometry, moonMaterial);
     moonMesh.position.set(3, 1, 2.3);
