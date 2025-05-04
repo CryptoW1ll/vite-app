@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import Footer from './Footer';
 import PlanetEarth from './PlanetEarth.jsx';
 import TagManager from 'react-gtm-module';
