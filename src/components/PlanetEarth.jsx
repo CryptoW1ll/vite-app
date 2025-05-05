@@ -65,7 +65,7 @@ const Clouds = () => {
 
   return (
     <mesh ref={cloudRef}>
-      <sphereGeometry args={[planetScales.earth * 1.03, 64, 64]} />
+      <sphereGeometry args={[planetScales.earth * 1.01, 64, 64]} />
       <meshPhongMaterial
         map={cloudMap}
         transparent={true}
