@@ -1,8 +1,8 @@
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader, extend } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
 import React, { useRef } from "react";
 import * as THREE from "three";
-
+import CCAttribution from "./CCAttribution";
 
 const planetScales = {
     earth: 6371 / 3000,
@@ -11,7 +11,7 @@ const planetScales = {
 
 const Moon = () => {
     const moonRef = useRef();
-    const moonmap = useLoader(THREE.TextureLoader, "./moonmap.jpg");
+    const moonmap = useLoader(THREE.TextureLoader, "./2k_moon.jpg");
 
     return (
         <mesh ref={moonRef} position={[3,1,2.3]}>
@@ -53,14 +53,37 @@ const Atmosphere = () => {
         </mesh>
     );
 };
+const Clouds = () => {
+  const cloudRef = useRef();
+  const cloudMap = useLoader(THREE.TextureLoader, "./8k_earth_clouds.jpg");
+
+  useFrame(() => {
+    if (cloudRef.current) {
+      cloudRef.current.rotation.y += 0.0006;
+    }
+  });
+
+  return (
+    <mesh ref={cloudRef}>
+      <sphereGeometry args={[planetScales.earth * 1.03, 64, 64]} />
+      <meshPhongMaterial
+        map={cloudMap}
+        transparent={true}
+        opacity={0.4}
+        depthWrite={false}
+      />
+    </mesh>
+  );
+};
+
 
 const Earth = () => {
   const earthRef = useRef();
 
    // Load textures
-   const colorMap = useLoader(THREE.TextureLoader, "./RenderData.png");
-   const bumpMap = useLoader(THREE.TextureLoader, "./earthbump.jpg");
-   const specularMap = useLoader(THREE.TextureLoader, "./specularmap.jpg");
+   const colorMap = useLoader(THREE.TextureLoader, "./8k_earth_daymap.jpg");
+   const bumpMap = useLoader(THREE.TextureLoader, "./2k_earth_normal_map.jpg");
+   const specularMap = useLoader(THREE.TextureLoader, "./8k_earth_specular_map.jpg");
  
 
   // Rotate Earth on each frame
@@ -79,7 +102,7 @@ const Earth = () => {
         bumpScale={1} 
         specularMap={specularMap} 
         specular={new THREE.Color("grey")}
-        shininess={7}
+        shininess={4}
       />
     </mesh>
   );
@@ -114,8 +137,11 @@ export default function PlanetEarth() {
         />
         <Moon />
         <Earth />
+        <Clouds />
         <Atmosphere />
+        
       </Canvas>
+      <CCAttribution/>
     </div>
   );
 }
