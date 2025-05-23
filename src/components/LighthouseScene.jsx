@@ -26,10 +26,11 @@ function SceneSetup() {
 
 export default function LighthouseScene() {
     return (
-        <Canvas camera={{ position: [0, 50, 200], fov: 75, near:0.1, 
-        far:2000 }} 
+        <div className="h-screen w-screen flex items-center justify-center relative">
+              <Canvas className="w-full h-full" style={{ pointerEvents: "none" }} camera={{ position: [0, 50, 200], fov: 75, near:0.1, far:2000 }}>
+        {/* <Canvas camera={{ position: [0, 50, 200], fov: 75, near:0.1, far:2000 }} >*/}
                  
-        >
+        
             <SceneSetup />
             <ambientLight intensity={0.1} />
             <directionalLight 
@@ -53,5 +54,6 @@ export default function LighthouseScene() {
                 rotation={[0, -20, 0]}
             />
         </Canvas>
+        </div>
     );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import Coinstand from "./Coinstand";
+import Coinstand from "../Coinstand";
 import '../index.css';
 import SkillBalanceBar from "./SkillBalanceBar";
 

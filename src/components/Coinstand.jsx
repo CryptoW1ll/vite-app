@@ -3,10 +3,10 @@ import React, { useRef, useState, useEffect, Suspense } from 'react';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 import { Color } from "three"; //import * as THREE from 'three';
 import * as THREE from 'three';
-import { useErrorBoundary } from 'use-error-boundary';
+//import { useErrorBoundary } from 'use-error-boundary';
 import { PCFSoftShadowMap } from 'three';
 import Coin from "./Coin.jsx";
-import {ErrorFallback, LoadingFallback} from "./Coin.jsx"
+//import {ErrorFallback, LoadingFallback} from "./Coin.jsx"
 
 function StandModel({ modelPath, hovered, active, ...props }) {
   const fbx = useLoader(FBXLoader, modelPath).clone();
@@ -101,7 +101,7 @@ function FBXModel({ modelPath, scale, position, rotation }) {
 
   useFrame((_, delta) => mixer.current?.update(delta))
 
-  if (error) return <ErrorFallback error={error} />
+  //if (error) return <ErrorFallback error={error} />
   if (!model) return null
 
   return (
@@ -114,11 +114,12 @@ function FBXModel({ modelPath, scale, position, rotation }) {
 
 
 export default function Coinstand() {
-  const { ErrorBoundary, didCatch, error } = useErrorBoundary();
+  //const { ErrorBoundary, didCatch, error } = useErrorBoundary();
   //const coinstand = "/models/coinstand.fbx";
-  
-  return didCatch ? ( <ErrorFallback error={error} />) : (
+  //return didCatch ? ( <ErrorFallback error={error} />) : (
+  return (
     <>
+        <div className="h-screen w-screen flex items-center justify-center bg-black relative">
     <Canvas 
       fallback={<div>Sorry no WebGL supported!</div>}
       scene={{ background: new Color(0x000000) }} 
@@ -127,6 +128,7 @@ export default function Coinstand() {
         type: PCFSoftShadowMap,
         bias: -0.0001
       }}
+      className="w-full h-full" style={{  }}
     >
       <ambientLight intensity={0.2} />
 
@@ -254,6 +256,7 @@ export default function Coinstand() {
           castShadow
               />
     </Canvas>
+    </div>
 
     {/* <div style={{
                 position: 'absolute',
