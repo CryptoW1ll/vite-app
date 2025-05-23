@@ -1,7 +1,7 @@
 import React from "react";
-import Coinstand from "../Coinstand";
+import Coinstand from "./Coinstand.jsx";
 import '../index.css';
-import SkillBalanceBar from "./SkillBalanceBar";
+import SkillBalanceBar from "./SkillBalanceBar.jsx";
 
 export default function About() {
     return (
