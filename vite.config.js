@@ -14,5 +14,10 @@ export default defineConfig({
         entryFileNames: 'assets/[name].[hash].js',
       }
     }
+  },
+  server: {
+    fs: {
+      deny: ['.env', '.git', 'node_modules', 'secret-folder']
+    }
   }
 });
