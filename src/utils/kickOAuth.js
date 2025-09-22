@@ -55,12 +55,19 @@ export const initiateKickOAuth = async (scopes = ['user:read']) => {
     const codeVerifier = generateCodeVerifier();
     const codeChallenge = await generateCodeChallenge(codeVerifier);
 
+    // Generate a unique key for this OAuth flow
+    const stateKey = 'oauth_' + crypto.getRandomValues(new Uint32Array(1))[0].toString(16);
     // Generate a random state for CSRF protection
-    const state = crypto.getRandomValues(new Uint32Array(1))[0].toString(16);
-    
-    // Store PKCE code verifier and state in sessionStorage
-    sessionStorage.setItem('oauth_state', state);
-    sessionStorage.setItem('oauth_code_verifier', codeVerifier);
+    const stateValue = crypto.getRandomValues(new Uint32Array(1))[0].toString(16);
+    // Encode both in the state parameter as JSON
+    const stateObj = { key: stateKey, value: stateValue };
+    const state = btoa(JSON.stringify(stateObj));
+    console.log('[OAUTH] Generated state:', stateValue, 'with key:', stateKey, 'encoded:', state);
+    // Store PKCE code verifier and state in localStorage with the unique key
+    localStorage.setItem(`${stateKey}_state`, stateValue);
+    localStorage.setItem(`${stateKey}_code_verifier`, codeVerifier);
+    console.log('[OAUTH] Stored state in localStorage:', localStorage.getItem(`${stateKey}_state`));
+    console.log('[OAUTH] Stored code_verifier in localStorage:', localStorage.getItem(`${stateKey}_code_verifier`));
 
     const params = new URLSearchParams({
       response_type: 'code',
@@ -85,63 +92,35 @@ export const initiateKickOAuth = async (scopes = ['user:read']) => {
 
 /**
  * Exchange authorization code for User Access Token
- * Uses backend proxy to keep client secret secure
  * @param {string} code - Authorization code from Kick
  * @returns {Promise<Object>} - Token response with access_token, refresh_token, etc.
  */
 export const exchangeCodeForToken = async (code) => {
   const CLIENT_ID = import.meta.env.VITE_KICK_CLIENT_ID;
   const REDIRECT_URI = `${window.location.origin}/auth`;
-  const codeVerifier = sessionStorage.getItem('oauth_code_verifier');
+  // Get state from URL and decode
+  const urlParams = new URLSearchParams(window.location.search);
+  const stateParam = urlParams.get('state');
+  let stateKey = null;
+  if (stateParam) {
+    try {
+      const stateObj = JSON.parse(atob(stateParam));
+      stateKey = stateObj.key;
+    } catch (e) {
+      console.error('[OAUTH] Failed to parse state param:', stateParam, e);
+    }
+  }
+  const codeVerifier = stateKey ? localStorage.getItem(`${stateKey}_code_verifier`) : null;
+  console.log('[OAUTH] Retrieved code_verifier from localStorage:', codeVerifier, 'with key:', stateKey);
   
   if (!codeVerifier) {
     throw new Error('No code verifier found. OAuth flow may have been compromised.');
   }
 
-  // Option 1: Use Firebase Function (recommended for production)
-  const USE_BACKEND_PROXY = import.meta.env.VITE_USE_BACKEND_PROXY === 'true';
-  
-  if (USE_BACKEND_PROXY) {
-    try {
-      // Send to Firebase Function instead of directly to Kick
-      const response = await fetch('/api/exchangeKickToken', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          code,
-          code_verifier: codeVerifier,
-          redirect_uri: REDIRECT_URI,
-        }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error_description || errorData.error || `HTTP ${response.status}: ${response.statusText}`);
-      }
-
-      const tokenData = await response.json();
-      
-      // Clean up stored PKCE parameters
-      sessionStorage.removeItem('oauth_code_verifier');
-      sessionStorage.removeItem('oauth_state');
-      
-      console.log('Successfully obtained access token via Firebase Function');
-      return tokenData;
-    } catch (error) {
-      console.error('Firebase Function token exchange failed:', error);
-      sessionStorage.removeItem('oauth_code_verifier');
-      sessionStorage.removeItem('oauth_state');
-      throw error;
-    }
-  }
-
-  // Option 2: Direct exchange (DEVELOPMENT ONLY)
   const CLIENT_SECRET = import.meta.env.VITE_KICK_CLIENT_SECRET;
   
   if (!CLIENT_SECRET) {
-    throw new Error('Client secret not configured and backend proxy not enabled. Set VITE_USE_BACKEND_PROXY=true for production.');
+    throw new Error('Client secret not configured. Please set VITE_KICK_CLIENT_SECRET in your environment variables.');
   }
 
   console.warn('⚠️ SECURITY WARNING: Using client secret in frontend. This is for development only!');
@@ -170,15 +149,19 @@ export const exchangeCodeForToken = async (code) => {
     const tokenData = await response.json();
     
     // Clean up stored PKCE parameters
-    sessionStorage.removeItem('oauth_code_verifier');
-    sessionStorage.removeItem('oauth_state');
+    if (stateKey) {
+      localStorage.removeItem(`${stateKey}_code_verifier`);
+      localStorage.removeItem(`${stateKey}_state`);
+    }
     
-    console.log('Successfully obtained access token from Kick (DEVELOPMENT MODE)');
+    console.log('Successfully obtained access token from Kick');
     return tokenData;
   } catch (error) {
     console.error('Token exchange failed:', error);
-    sessionStorage.removeItem('oauth_code_verifier');
-    sessionStorage.removeItem('oauth_state');
+    if (stateKey) {
+      localStorage.removeItem(`${stateKey}_code_verifier`);
+      localStorage.removeItem(`${stateKey}_state`);
+    }
     throw error;
   }
 };
@@ -306,8 +289,13 @@ export const clearTokens = () => {
   localStorage.removeItem('kick_token_expires');
   localStorage.removeItem('kick_app_token');
   localStorage.removeItem('kick_app_token_expires');
-  sessionStorage.removeItem('oauth_code_verifier');
-  sessionStorage.removeItem('oauth_state');
+  // Remove all oauth state and code_verifier keys
+  Object.keys(localStorage).forEach((key) => {
+    if (key.endsWith('_code_verifier') || key.endsWith('_state')) {
+      localStorage.removeItem(key);
+    }
+  });
+  console.log('[OAUTH] Cleared all oauth_code_verifier and oauth_state keys from localStorage');
   console.log('All tokens cleared');
 };
 
