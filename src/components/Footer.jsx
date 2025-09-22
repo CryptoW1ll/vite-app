@@ -13,6 +13,7 @@ export default function Footer() {
                 <a href="mailto:admin@echelonstudio.co.nz" className="text-gray-400 hover:text-white">Contact Us</a>
                 <a href="https://store.steampowered.com/" className="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">Steam</a>
                 <a href="https://discord.gg/VCGzzkw2" className="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">Discord</a>
+                <a href="https://kick.com/echelonstudio" className="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">Kick</a>
                 <a href="https://www.facebook.com/profile.php?id=61568552083505" className="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">Facebook</a>
                 <a href="https://x.com/_EchelonStudio" className="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">X</a>
                 <a href="https://www.youtube.com/@EchelonInteractiveStudio" className="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">YouTube</a>
