@@ -5,11 +5,7 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
-        "source": "/vite-app{,/**}",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/",
+        "source": "**",
         "destination": "/index.html"
       }
     ],
