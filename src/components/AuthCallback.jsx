@@ -36,6 +36,42 @@ export default function AuthCallback() {
       return;
     }
 
+    const PKCEStorage = async () => {
+    try {
+      // setStatus('Testing PKCE storage...');
+      const response = await fetch(`${backendURL}/api/auth/kick/store-pkce`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          state: state,
+          codeVerifier: codeVerifier,
+          timestamp: Date.now()
+        }),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+      const data = await response.json();
+      setStatus('✅ PKCE storage test successful!');
+      console.log('PKCE storage result:', data);
+    } catch (err) {
+      setError(err.message);
+      setStatus('❌ PKCE storage test failed');
+      console.error('PKCE test failed:', err);
+    }
+  };
+
+    PKCEStorage();
+
+    setTimeout(() => {
+      setMessage("Storing PKCE Automatically..." );
+        }, 3000);
+
+
+
     if (!code || !state) {
       setStatus("error");
       setMessage("Missing authorization code or state parameter.");
@@ -67,7 +103,21 @@ export default function AuthCallback() {
         The request includes the session cookie (kick.oauth.session) that was set earlier in the OAuth flow.
         If either the body or the session is missing/invalid, you will get a 400 error.
       */
-
+     /*
+      OAuth Token Exchange Request Format:
+    POST https://id.kick.com/oauth/token
+    {
+      "grant_type": "authorization_code",
+      "code": "THE_CODE_FROM_URL",
+      "redirect_uri": "https://echelonstudio.co.nz/auth",
+      "client_id": "YOUR_CLIENT_ID",
+      "client_secret": "YOUR_CLIENT_SECRET",
+      "code_verifier": "THE_VERIFIER_GENERATED_IN_UNITY"
+    }
+      //
+     
+     */
+      // Add Session to body
       const response = await fetch(`${backendURL}/api/auth/kick/exchange`, {
         method: 'POST',
         credentials: 'include', // Important for session cookies
@@ -160,35 +210,6 @@ export default function AuthCallback() {
               <div className="flex flex-col items-center space-y-4">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
                 <p className="text-sm text-gray-600">{message}</p>
-              </div>
-            )}
-
-            {status === 'success' && (
-              <div className="flex flex-col items-center space-y-4">
-                <div className="rounded-full bg-green-100 p-3">
-                  <svg className="h-8 w-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <p className="text-sm text-green-600 font-medium">{message}</p>
-                <p className="text-xs text-gray-500">Taking you back to the homepage...</p>
-              </div>
-            )}
-
-            {status === 'error' && (
-              <div className="flex flex-col items-center space-y-4">
-                <div className="rounded-full bg-red-100 p-3">
-                  <svg className="h-8 w-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </div>
-                <p className="text-sm text-red-600 font-medium">{message}</p>
-                <button
-                  onClick={() => window.location.href = '/'}
-                  className="mt-4 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                >
-                  Return to Home
-                </button>
               </div>
             )}
           </div>

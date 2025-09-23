@@ -26,36 +26,36 @@ export default function BackendTest() {
     }
   };
 
-  const testPKCEStorage = async () => {
-    try {
-      setStatus('Testing PKCE storage...');
-      const response = await fetch(`${backendURL}/api/auth/kick/store-pkce`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          state: 'test_state_12345',
-          codeVerifier: 'test_code_verifier_at_least_43_characters_long_abc123',
-          timestamp: Date.now()
-        }),
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      }
-      const data = await response.json();
-      setStatus('✅ PKCE storage test successful!');
-      console.log('PKCE storage result:', data);
-    } catch (err) {
-      setError(err.message);
-      setStatus('❌ PKCE storage test failed');
-      console.error('PKCE test failed:', err);
-    }
-  };
+  // const testPKCEStorage = async () => {
+  //   try {
+  //     setStatus('Testing PKCE storage...');
+  //     const response = await fetch(`${backendURL}/api/auth/kick/store-pkce`, {
+  //       method: 'POST',
+  //       credentials: 'include',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         state: 'test_state_12345',
+  //         codeVerifier: 'test_code_verifier_at_least_43_characters_long_abc123',
+  //         timestamp: Date.now()
+  //       }),
+  //     });
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+  //     }
+  //     const data = await response.json();
+  //     setStatus('✅ PKCE storage test successful!');
+  //     console.log('PKCE storage result:', data);
+  //   } catch (err) {
+  //     setError(err.message);
+  //     setStatus('❌ PKCE storage test failed');
+  //     console.error('PKCE test failed:', err);
+  //   }
+  // };
 
   useEffect(() => {
-    testBackend();
+    // testBackend();
   }, []);
 
   return (
@@ -85,18 +85,18 @@ export default function BackendTest() {
           Test Health
         </button>
         
-        <button
+        {/* <button
           onClick={testPKCEStorage}
           className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 text-sm"
         >
           Test PKCE
-        </button>
+        </button> */}
       </div>
 
-      <div className="mt-4 text-xs text-gray-500">
+      {/* <div className="mt-4 text-xs text-gray-500">
         <p>Backend should be running on: http://localhost:3001</p>
         <p>Make sure your backend server is running with 'npm run dev'</p>
-      </div>
+      </div> */}
     </div>
   );
 }
