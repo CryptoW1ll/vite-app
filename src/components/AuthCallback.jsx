@@ -37,7 +37,7 @@ export default function AuthCallback() {
     // This avoids exposing client_secret in frontend code
     const exchangeTokenSafely = async (code) => {
       const backendURL = process.env.NODE_ENV === 'production' 
-        ? 'https://your-backend-domain.com'
+        ? 'https://echelonstudio.co.nz'
         : 'http://localhost:3001';
 
       // Use same redirect URI as OAuth initiation (production URL for now)

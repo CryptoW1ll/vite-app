@@ -67,7 +67,7 @@ export const initiateKickOAuthWithBackend = async (scopes = ['user:read']) => {
 
     // Store PKCE data on backend instead of localStorage
     const backendURL = process.env.NODE_ENV === 'production' 
-      ? 'https://your-backend-domain.com'
+      ? 'https://echelonstudio.co.nz'
       : 'http://localhost:3001';
 
     console.log('[OAUTH] Storing PKCE data on backend...');
