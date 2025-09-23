@@ -8,6 +8,15 @@ import { exchangeCodeForToken, storeTokens } from '../utils/kickOAuth';
 - ✅ `DELETE /api/auth/kick/logout` - Secure logout
 */
 
+/*
+Debug 404
+[Check] The cookie wasn't set properly during the login step.
+[Check]The frontend is on a different domain (e.g., localhost vs. echelonstudio.co.nz), causing cross-site issues.
+[CoRS Correct] Backend isn’t configured with proper CORS or session handling.
+[CoRS Correct] Double-check backend CORS config:
+
+*/
+
 export default function AuthCallback() {
   const [status, setStatus] = useState("processing");
   const [message, setMessage] = useState("Exchanging code for tokens...");
@@ -46,7 +55,18 @@ export default function AuthCallback() {
         : 'https://echelonstudio.co.nz/auth'; // Use production URI for development testing
 
       console.log('[OAUTH] Using redirect URI for token exchange:', redirectUri);
-      console.log('[OAUTH] backend URL:', `${backendURL}/api/auth/kick/exchange`);
+      console.log('[OAUTH] backend URL:', `${backendURL}/api/auth/kick/exchange`); // shouldnt this be kick/exchange?
+
+      //
+
+
+      /*
+       Above logs seem correct
+      To avoid a 400 error, make sure:
+        You send a POST request with a JSON body containing both code and redirect_uri.
+        The request includes the session cookie (kick.oauth.session) that was set earlier in the OAuth flow.
+        If either the body or the session is missing/invalid, you will get a 400 error.
+      */
 
       const response = await fetch(`${backendURL}/api/auth/kick/exchange`, {
         method: 'POST',
@@ -58,14 +78,23 @@ export default function AuthCallback() {
           code,
           redirect_uri: redirectUri
         }),
+        
       });
 
+      console.log('[OAUTH] Token exchange response status:', response.status);
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.error || errorData.message || `HTTP ${response.status}`);
       }
 
       return response.json();
+
+      // const responseData = await response.json().catch(() => ({}));
+      // console.log('[OAUTH] Token exchange response status:', response.status);
+      // if (!response.ok) {
+      //   throw new Error(responseData.error || responseData.message || `HTTP ${response.status}`);
+      // }
+      // return responseData;
     };
 
     // Always use backend exchange for testing (instead of exposing client secret)
