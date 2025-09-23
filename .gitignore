@@ -29,3 +29,6 @@ dist-ssr
 *.sln
 *.sw?
 
+.env.example
+IMPLEMENTATION_STATUS.md
+OAUTH_PRODUCTION_GUIDE.md

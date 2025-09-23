@@ -14,6 +14,8 @@ import FATF from './components/FATF'
 import Contact from './components/Contact.jsx'
 import Layout from './components/Layout.jsx'
 import AuthCallback from './components/AuthCallback.jsx'
+import BackendTest from './components/BackendTest.jsx'
+import KickIntegration from './components/KickIntegration.jsx'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Homepage /> },
       { path: 'auth', element: <AuthCallback /> },
+      { path: 'backend-test', element: <BackendTest /> },
+      { path: 'kick-integration', element: <KickIntegration /> },
       // { path: 'about', element: <About /> },
       // { path: 'projects', element: <Project /> },
       // { path: 'projects/:projectId', element: <Project /> },

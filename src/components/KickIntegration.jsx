@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { initiateKickOAuth, isAuthenticated, clearTokens, getAccessToken, kickApiRequest } from '../utils/kickOAuth';
+import { Link } from 'react-router-dom';
+import { initiateKickOAuth, initiateKickOAuthWithBackend, isAuthenticated, clearTokens, getAccessToken, kickApiRequest } from '../utils/kickOAuth';
 
 export default function KickIntegration() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -29,21 +30,53 @@ export default function KickIntegration() {
   };
 
   const handleLogin = () => {
-    // Request necessary scopes for your application
-    initiateKickOAuth(['user:read', 'channel:read']);
+    // Use backend for secure PKCE storage (testing with local backend)
+    initiateKickOAuthWithBackend(['user:read', 'channel:read']);
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      // Clear tokens on backend
+      const backendURL = process.env.NODE_ENV === 'production' 
+        ? 'https://your-backend-domain.com'
+        : 'http://localhost:3001';
+
+      await fetch(`${backendURL}/api/auth/kick/logout`, {
+        method: 'DELETE',
+        credentials: 'include',
+      });
+    } catch (error) {
+      console.error('Backend logout failed:', error);
+    }
+    
+    // Clear local tokens
     clearTokens();
     setAuthenticated(false);
     setUserInfo(null);
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
-        🎮 Kick Integration
-      </h3>
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md mx-auto">
+        {/* Header with back link */}
+        <div className="text-center mb-8">
+          <Link 
+            to="/" 
+            className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700 mb-4"
+          >
+            ← Back to Home
+          </Link>
+          <h2 className="text-2xl font-bold text-gray-900">Kick OAuth Test</h2>
+          <p className="mt-2 text-sm text-gray-600">
+            Test the complete OAuth flow with your backend
+          </p>
+        </div>
+
+        {/* Main integration component */}
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
+            🎮 Kick Integration
+          </h3>
       
       {!authenticated ? (
         <div className="text-center space-y-4">
@@ -97,6 +130,8 @@ export default function KickIntegration() {
           </button>
         </div>
       )}
+        </div>
+      </div>
     </div>
   );
 }
