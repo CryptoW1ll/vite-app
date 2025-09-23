@@ -38,7 +38,7 @@ export default function KickIntegration() {
     try {
       // Clear tokens on backend
       const backendURL = process.env.NODE_ENV === 'production' 
-        ? 'https://your-backend-domain.com'
+        ? 'https://backend-auth-z6z0.onrender.com'
         : 'http://localhost:3001';
 
       await fetch(`${backendURL}/api/auth/kick/logout`, {
@@ -48,7 +48,6 @@ export default function KickIntegration() {
     } catch (error) {
       console.error('Backend logout failed:', error);
     }
-    
     // Clear local tokens
     clearTokens();
     setAuthenticated(false);

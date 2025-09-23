@@ -4,23 +4,21 @@ export default function BackendTest() {
   const [status, setStatus] = useState('Testing...');
   const [error, setError] = useState(null);
 
+  const backendURL = 'https://backend-auth-z6z0.onrender.com';
+
   const testBackend = async () => {
     try {
       setStatus('Connecting to backend...');
-      
-      const response = await fetch('http://localhost:3001/health', {
+      const response = await fetch(`${backendURL}/health`, {
         method: 'GET',
         credentials: 'include',
       });
-
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
-
       const data = await response.json();
       setStatus('✅ Backend connected successfully!');
       console.log('Backend health check:', data);
-      
     } catch (err) {
       setError(err.message);
       setStatus('❌ Backend connection failed');
@@ -31,8 +29,7 @@ export default function BackendTest() {
   const testPKCEStorage = async () => {
     try {
       setStatus('Testing PKCE storage...');
-      
-      const response = await fetch('http://localhost:3001/api/auth/kick/store-pkce', {
+      const response = await fetch(`${backendURL}/api/auth/kick/store-pkce`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -44,15 +41,12 @@ export default function BackendTest() {
           timestamp: Date.now()
         }),
       });
-
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
-
       const data = await response.json();
       setStatus('✅ PKCE storage test successful!');
       console.log('PKCE storage result:', data);
-      
     } catch (err) {
       setError(err.message);
       setStatus('❌ PKCE storage test failed');

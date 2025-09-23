@@ -37,7 +37,7 @@ export default function AuthCallback() {
     // This avoids exposing client_secret in frontend code
     const exchangeTokenSafely = async (code) => {
       const backendURL = process.env.NODE_ENV === 'production' 
-        ? 'https://echelonstudio.co.nz'
+        ? 'https://backend-auth-z6z0.onrender.com'
         : 'http://localhost:3001';
 
       // Use same redirect URI as OAuth initiation (production URL for now)
@@ -46,6 +46,7 @@ export default function AuthCallback() {
         : 'https://echelonstudio.co.nz/auth'; // Use production URI for development testing
 
       console.log('[OAUTH] Using redirect URI for token exchange:', redirectUri);
+      debug.log('[OAUTH] backend URL:', `${backendURL}/api/auth/kick/exchange`);
 
       const response = await fetch(`${backendURL}/api/auth/kick/exchange`, {
         method: 'POST',
