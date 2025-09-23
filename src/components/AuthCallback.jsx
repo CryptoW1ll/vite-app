@@ -21,151 +21,107 @@ export default function AuthCallback() {
   const [status, setStatus] = useState("processing");
   const [message, setMessage] = useState("Exchanging code for tokens...");
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get("code");
-    const state = params.get("state");
-    const error = params.get("error");
-    const errorDescription = params.get("error_description");
+  const backendURL = 'https://backend-auth-z6z0.onrender.com';
 
-    // Handle OAuth errors from Kick
-    if (error) {
-      console.error('[OAUTH] Error from Kick:', error, errorDescription);
-      setStatus("error");
-      setMessage(`Authentication failed: ${errorDescription || error}`);
-      return;
+useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get("code");
+  const state = params.get("state");
+  const error = params.get("error");
+  const errorDescription = params.get("error_description");
+
+  if (error) {
+    console.error('[OAUTH] Error from Kick:', error, errorDescription);
+    setStatus("error");
+    setMessage(`Authentication failed: ${errorDescription || error}`);
+    return;
+  }
+
+  if (!code || !state) {
+    setStatus("error");
+    setMessage("Missing authorization code or state parameter.");
+    return;
+  }
+
+  let codeVerifier = null;
+  try {
+    codeVerifier = localStorage.getItem('pkce_code_verifier') || sessionStorage.getItem('pkce_code_verifier');
+  } catch (e) {}
+  if (!codeVerifier) {
+    codeVerifier = 'test_code_verifier_at_least_43_characters_long_abc123';
+  }
+
+  const redirectUri = process.env.NODE_ENV === 'production'
+    ? 'https://echelonstudio.co.nz/auth'
+    : 'https://echelonstudio.co.nz/auth'; // Use prod URI in dev too
+
+  const backendURL = process.env.NODE_ENV === 'production'
+    ? 'https://backend-auth-z6z0.onrender.com'
+    : 'http://localhost:3001';
+
+  const exchangeTokenSafely = async (code) => {
+    console.log('[OAUTH] Using redirect URI:', redirectUri);
+    const response = await fetch(`${backendURL}/api/auth/kick/exchange`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code, redirect_uri: redirectUri })
+    });
+
+    console.log('[OAUTH] Token exchange response status:', response.status);
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || errorData.message || `HTTP ${response.status}`);
     }
 
-    const PKCEStorage = async () => {
+    return response.json();
+  };
+
+  const storePKCE = async () => {
     try {
-      // setStatus('Testing PKCE storage...');
       const response = await fetch(`${backendURL}/api/auth/kick/store-pkce`, {
         method: 'POST',
         credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           state: state,
           codeVerifier: codeVerifier,
           timestamp: Date.now()
         }),
       });
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-      }
+
+      if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+
       const data = await response.json();
-      setStatus('✅ PKCE storage test successful!');
-      console.log('PKCE storage result:', data);
+      console.log('✅ PKCE stored successfully:', data);
+      return true;
     } catch (err) {
-      setError(err.message);
-      setStatus('❌ PKCE storage test failed');
-      console.error('PKCE test failed:', err);
+      console.error('❌ PKCE storage failed:', err);
+      setStatus("error");
+      setMessage("PKCE storage failed: " + err.message);
+      return false;
     }
   };
 
-    PKCEStorage();
+  storePKCE().then((stored) => {
+    if (!stored) return;
 
-    setTimeout(() => {
-      setMessage("Storing PKCE Automatically..." );
-        }, 3000);
-
-
-
-    if (!code || !state) {
-      setStatus("error");
-      setMessage("Missing authorization code or state parameter.");
-      return;
-    }
-
-    // Production-safe token exchange using backend proxy
-    // This avoids exposing client_secret in frontend code
-    const exchangeTokenSafely = async (code) => {
-      const backendURL = process.env.NODE_ENV === 'production' 
-        ? 'https://backend-auth-z6z0.onrender.com'
-        : 'http://localhost:3001';
-
-      // Use same redirect URI as OAuth initiation (production URL for now)
-      const redirectUri = process.env.NODE_ENV === 'production' 
-        ? 'https://echelonstudio.co.nz/auth'
-        : 'https://echelonstudio.co.nz/auth'; // Use production URI for development testing
-
-      console.log('[OAUTH] Using redirect URI for token exchange:', redirectUri);
-      console.log('[OAUTH] backend URL:', `${backendURL}/api/auth/kick/exchange`); // shouldnt this be kick/exchange?
-
-      //
-
-
-      /*
-       Above logs seem correct
-      To avoid a 400 error, make sure:
-        You send a POST request with a JSON body containing both code and redirect_uri.
-        The request includes the session cookie (kick.oauth.session) that was set earlier in the OAuth flow.
-        If either the body or the session is missing/invalid, you will get a 400 error.
-      */
-     /*
-      OAuth Token Exchange Request Format:
-    POST https://id.kick.com/oauth/token
-    {
-      "grant_type": "authorization_code",
-      "code": "THE_CODE_FROM_URL",
-      "redirect_uri": "https://echelonstudio.co.nz/auth",
-      "client_id": "YOUR_CLIENT_ID",
-      "client_secret": "YOUR_CLIENT_SECRET",
-      "code_verifier": "THE_VERIFIER_GENERATED_IN_UNITY"
-    }
-      //
-     
-     */
-      // Add Session to body
-      const response = await fetch(`${backendURL}/api/auth/kick/exchange`, {
-        method: 'POST',
-        credentials: 'include', // Important for session cookies
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          code,
-          redirect_uri: redirectUri
-        }),
-        
-      });
-
-      console.log('[OAUTH] Token exchange response status:', response.status);
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || errorData.message || `HTTP ${response.status}`);
-      }
-
-      return response.json();
-
-      // const responseData = await response.json().catch(() => ({}));
-      // console.log('[OAUTH] Token exchange response status:', response.status);
-      // if (!response.ok) {
-      //   throw new Error(responseData.error || responseData.message || `HTTP ${response.status}`);
-      // }
-      // return responseData;
-    };
-
-    // Always use backend exchange for testing (instead of exposing client secret)
-    const tokenExchange = exchangeTokenSafely(code);
-
-    tokenExchange
+    exchangeTokenSafely(code)
       .then((tokens) => {
         console.log('[OAUTH] Tokens received:', tokens);
         storeTokens(tokens);
         setStatus("success");
         setMessage("Kick authentication successful!");
-        // Redirect to home after successful authentication
-        setTimeout(() => {
-          window.location.href = '/';
-        }, 2000);
+        setTimeout(() => { window.location.href = '/'; }, 2000);
       })
       .catch((error) => {
-        console.error('[OAUTH] Error exchanging code for tokens:', error);
+        console.error('[OAUTH] Token exchange failed:', error);
         setStatus("error");
         setMessage("OAuth failed: " + error.message);
       });
+  });
+}, []);
 
     /* 
     OAuth Token Exchange Request Format:
@@ -193,8 +149,6 @@ export default function AuthCallback() {
     - Unity calls GET https://echelonstudio.co.nz/api/session (with UnityWebRequest)
     - Backend returns { "access_token": "..." }
     */
-  }, []);
-
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">

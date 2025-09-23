@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 export default function BackendTest() {
   const [status, setStatus] = useState('Testing...');
-  const [error, setError] = useState(null);
+  //const [error, setError] = useState(null);
 
-  const backendURL = 'https://backend-auth-z6z0.onrender.com';
+  // const backendURL = 'https://backend-auth-z6z0.onrender.com';
 
   const testBackend = async () => {
     try {
