@@ -46,7 +46,7 @@ export default function AuthCallback() {
         : 'https://echelonstudio.co.nz/auth'; // Use production URI for development testing
 
       console.log('[OAUTH] Using redirect URI for token exchange:', redirectUri);
-      debug.log('[OAUTH] backend URL:', `${backendURL}/api/auth/kick/exchange`);
+      console.log('[OAUTH] backend URL:', `${backendURL}/api/auth/kick/exchange`);
 
       const response = await fetch(`${backendURL}/api/auth/kick/exchange`, {
         method: 'POST',
