@@ -1,63 +1,175 @@
 import React from "react";
 import Coinstand from "./Coinstand.jsx";
-import '../index.css';
 import SkillBalanceBar from "./SkillBalanceBar.jsx";
+import '../index.css';
+
+function AboutSummary() {
+    return (
+        <section className="flex flex-col md:flex-row gap-8 mb-8 items-center">
+            <img src="/images/Avatar1.png" alt="Avatar" className="w-48 h-48 rounded-lg shadow-lg object-cover" />
+            <div>
+                <h1 className="text-4xl font-bold mb-2 text-white">About Me</h1>
+                <p className="mb-2">Hi, I'm <strong>Will Fowlds</strong>, a <strong>Developer</strong> with a passion for <strong>Game Development</strong>. With a background in <strong>C#, Unity Engine</strong>, I love creating <strong>unique gaming experiences</strong>.</p>
+                <div className="flex flex-wrap gap-2 mt-2">
+                    <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Leadership</span>
+                    <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Communication</span>
+                    <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Mentorship</span>
+                    <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Resiliency</span>
+                    <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Building Relationships</span>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function PersonalitySection() {
+    return (
+        <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-2 text-white">Personality & Strengths</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
+                                <div className="bg-gray-800 rounded p-4">
+                                    <b>INTP:</b> Introverted, Analytic, and Strategic.
+                                    <div className="mt-2 space-y-2">
+                                        <SkillBalanceBar LeftSkill="Extrovert" RightSkill="Introvert" value={80} />
+                                        <SkillBalanceBar LeftSkill="Sensing" RightSkill="Intuitive" value={60} />
+                                        <SkillBalanceBar LeftSkill="Thinking" RightSkill="Feeling" value={20} />
+                                        <SkillBalanceBar LeftSkill="Judging" RightSkill="Perceiving" value={70} />
+                                    </div>
+                                </div>
+                                <div className="bg-gray-800 rounded p-4">
+                                    <b>Unconventional Leadership Style:</b> Promote "think smart", innovation and open communication. Empower teams with responsibility and a long-term strategic vision. Build trust and rapport with team members.
+                                    <div className="mt-2 space-y-2">
+                                        <SkillBalanceBar LeftSkill="Technical" RightSkill="Non-Technical" value={70} />
+                                        <SkillBalanceBar LeftSkill="Groups" RightSkill="One-on-One" value={70} />
+                                        <SkillBalanceBar LeftSkill="Creative" RightSkill="Analytical" value={50} />
+                                        <SkillBalanceBar LeftSkill="Small talk" RightSkill="Deep talk" value={80} />
+                                    </div>
+                                </div>
+                                <div className="bg-gray-800 rounded p-4">
+                                    <b>Strengths:</b>
+                                    <ul className="list-disc ml-5 mt-2">
+                                        <li>Creative problem solver</li>
+                                        <li>Analytical thinking</li>
+                                        <li>Objective decision making</li>
+                                    </ul>
+                                </div>
+                                <div className="bg-gray-800 rounded p-4">
+                                    <b>Weaknesses:</b>
+                                    <ul className="list-disc ml-5 mt-2">
+                                        <li>Social awkwardness</li>
+                                        <li>Struggle to verbally articulate ideas</li>
+                                        <li>Overanalysis (analysis paralysis)</li>
+                                    </ul>
+                                </div>
+                            </div>
+        </section>
+    );
+}
+
+
+function EducationMilitaryGrid() {
+    return (
+        <section className="mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Education */}
+                <div className="bg-gray-800 rounded p-6">
+                    <h2 className="text-2xl font-semibold mb-2 text-white">Education</h2>
+                    <ul className="list-disc ml-5 text-white">
+                        <li>2005: First year student in Bachelors of Information Technology at Otago Polytechnic</li>
+                        <li>2009 - 2019: Numerous Military and Leadership Courses
+                            <ul className="list-disc ml-5">
+                                <li>Blanchards Leadership Development Framework</li>
+                                <li>NZDF Lead Self/Teams/Leaders Development Programmes</li>
+                            </ul>
+                        </li>
+                        <li>2021: Level 4 Certificate in Small Business Management at Southern Institute of Technology</li>
+                        <li>2022: Level 5, 6 papers from a Software Engineering Degree at Media Design School</li>
+                        <li>2023-2025: Bachelors of Information Technology at Southern Institute of Technology</li>
+                    </ul>
+                </div>
+                {/* Military */}
+                <div className="bg-gray-800 rounded p-6">
+                    <h2 className="text-2xl font-semibold mb-2 text-white">Military Experience</h2>
+                    <ul className="list-disc ml-5 text-white">
+                        <li>2009: Joined The Royal New Zealand Navy as a Communications Analyst/Electronic Warfare Specialist</li>
+                        <li>2014: Promoted to Leading Communications Analyst</li>
+                        <li>2016: Received High Duties Acknowledgement</li>
+                    </ul>
+                    <div className="mt-2 text-base text-white">
+                        <p>Operation deployments to the Middle East, supporting NZDF and Coalition Forces. UNCLASS assignments included:</p>
+                        <ul className="list-disc ml-5">
+                            <li><strong>Counter Piracy and Narcotics</strong> <a href="https://www.nzdf.mil.nz/media-centre/news/patrolling-the-seas/" className="text-blue-400" target="_blank" rel="noopener noreferrer">Operation TIKI</a></li>
+                            <li><a href="https://www.nzdf.mil.nz/media-centre/news/patrolling-the-seas/" className="text-blue-400" target="_blank" rel="noopener noreferrer">Operation TAKAPU</a></li>
+                            <li><strong>Counter Terrorism</strong> <a href="https://www.defence.gov.au/defence-activities/operations/global-operations/okra" className="text-blue-400" target="_blank" rel="noopener noreferrer">Operation OKRA</a></li>
+                            <li><a href="https://www.defence.govt.nz/assets/publications/NZ-Military-Contribution-to-Defeat-ISIS-in-Iraq.pdf" className="text-blue-400" target="_blank" rel="noopener noreferrer">Operation MANAWA</a></li>
+                            <li><strong>Hostage Recovery</strong> Operation RAUPO</li>
+                        </ul>
+                        <p className="mt-2">While proud of my service, I am grateful to those who gave the ultimate sacrifice. Peace in the Middle East! Inshallah.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function CoinCollectionSection() {
+        return (
+            <section className="mb-8">
+                <h2 className="text-2xl font-semibold mb-2 text-white">Coin Collection</h2>
+                                <div className="mt-4"><Coinstand /></div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+                    <div className="bg-gray-700 p-4 rounded">
+                        <p>United States Pentagon September 11 Challenge Coin. Sparked my interest in Military and Intelligence.</p>
+                    </div>
+                    <div className="bg-gray-700 p-4 rounded">
+                        <p>New Zealand Defence Force Veteran Challenge Coin. Design matches the official veteran pin.</p>
+                    </div>
+                    <div className="bg-gray-700 p-4 rounded">
+                        <p>Government Communications Security Bureau Challenge Coin. Presented by colleagues.</p>
+                    </div>
+                    <div className="bg-gray-700 p-4 rounded">
+                        <p>Director Support to Military Operations Australia Challenge Coin. Presented by Unit Commander for Operation OKRA.</p>
+                    </div>
+                    <div className="bg-gray-700 p-4 rounded">
+                        <p>Director Support to Military Operations New Zealand Challenge Coin. Presented by the Unit Commander.</p>
+                    </div>
+                    <div className="bg-gray-700 p-4 rounded">
+                        <p>Australian Signals Directorate Challenge Coin. Presented at the end of my Tour of Duty for Operation OKRA.</p>
+                    </div>
+                    <div className="bg-gray-700 p-4 rounded">
+                        <p>Rear Admiral John Martin Chief of Navy Challenge Coin. Presented after briefing on NZDF's counter narcotics operations.</p>
+                    </div>
+                    <div className="bg-gray-700 p-4 rounded">
+                        <p>Naval Operations Support Unit Challenge Coin. Presented by the Unit Commander.</p>
+                    </div>
+                    <div className="bg-gray-700 p-4 rounded">
+                        <p>1st Infantry Battalion Challenge Coin. Purchased to commemorate personnel Killed in Action in Afghanistan.</p>
+                    </div>
+                </div>
+            </section>
+        );
+}
+
+function HobbiesSection() {
+    return (
+        <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-2 text-white">Interests & Hobbies</h2>
+            <p>A short section about hobbies, interests, or what drives you. Helps visitors connect with you on a personal level.</p>
+        </section>
+    );
+}
 
 export default function About() {
     return (
-
-        <div className="grid grid-cols-5 grid-rows-5 gap-4">
-            <div className="row-span-5">
-                <img src="/images/Avatar.png" alt="Coin Stand" className="w-full h-auto rounded-lg shadow-lg" />
-
-                <b>Skills</b>
-                <ul className="list-disc ml-5">
-                    <li>Leadership</li>
-                    <li>Communication</li>
-                    <li>Mentorship</li>
-                    <li>Resiliency</li>
-                    <li>Building Relationships</li>
-
-                    {/* <li>Unity</li>
-                    <li>C#</li>
-                    <li>Game Development</li>
-                    <li>Game Design</li>
-                    <li>Game Mechanics</li>
-                    <li>Game Programming</li>
-                    <li>Game Art</li>
-                    <li>Game Animation</li>
-                    <li>Game Audio</li> */}
-                </ul>
-
-                <p><b>Personality</b></p>
-                <p><b>INTP: Intoverted, Analytic, and Strategic.</b></p>
-                <SkillBalanceBar LeftSkill="Extrovert" RightSkill="Introvert" value={80} />
-                <SkillBalanceBar LeftSkill="Sensing" RightSkill="Intuitive" value={60} /> 
-                <SkillBalanceBar LeftSkill="Thinking" RightSkill="Feeling" value={20} />
-                <SkillBalanceBar LeftSkill="Judging" RightSkill="Perceiving" value={70} />
-
-                <p><b>Unconventional Leadership Style</b></p>
-                <p>Promote "think smart", innovation and open communication.</p>
-                <p>Influencing others and empowering teams with responsibility, and a long-term strategic vision.</p>
-                <p>Building trust and rapport with individual team members.</p>
-                <p></p>
-                
-                <SkillBalanceBar LeftSkill="Technical" RightSkill="Non-Technical" value={70} />     
-                <SkillBalanceBar LeftSkill="Groups" RightSkill="One-on-One" value={70} />             
-                <SkillBalanceBar LeftSkill="Creative" RightSkill="Analytical" value={50} />
-                <SkillBalanceBar LeftSkill="Small talk" RightSkill="Deep talk" value={80} />       
-
-                <p><b>Strengths</b></p>
-                <p>Creative problem solver.</p>
-                <p>Analytical thinking.</p>
-                <p>Objective decision making.</p>
-
-                <p><b>Weaknesses</b></p>
-                <p>Social Awkwardness.</p>
-                <p>Struggle to verbally articulate ideas well.</p>
-                <p>Overanalysis. analysis paralysis.</p>
-            </div>
-            <div className="col-span-4 row-span-5">
+        <div className="max-w-5xl mx-auto px-4 py-8">
+            <AboutSummary />
+            <PersonalitySection />
+            <EducationMilitaryGrid />
+            <CoinCollectionSection />
+            {/* <HobbiesSection /> */}
+        </div>
+    );
+}
 
             <div className="app-container">
 
@@ -69,9 +181,6 @@ export default function About() {
                     <p> Hi, I'm <strong>Will Fowlds</strong>, a <strong>Developer</strong> with a passion for <strong>Game Development</strong>.
                         With a background in <strong>C#, Unity Engine</strong>, I love creating <strong>unique gaming experiences.</strong>.</p>
                 </div>
-                {/* <div className="scene-container" id="">
-                    <Coinstand/>
-                </div> */}
 
                 {/* Experience Section */}
                 <div className="scene-container relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8 pointer-events-auto" id="">
@@ -129,6 +238,10 @@ export default function About() {
                         </p>
                     </div>
 
+                    
+
+                    
+
                     <Coinstand/>
 
                     {/* Show/ Hide */}
@@ -164,58 +277,6 @@ export default function About() {
                         </div>
                     </div>
 
-                    <p><br/>
-                    echelon [ esh-uh-lon ]\n
-                i.  a level of command, authority, or rank.\n
-                ii. a formation of troops, ships, or aircraft.\n
-                iii.codename ECHELON. Homage to my previous career.\n\n
-
-                The significance to the term for me, reflects\n 
-                both its hierarchical and operational meanings. 
-
-
-                echelon [ esh-uh-lon ]
-                i.  a level of command, authority, or rank.
-                ii. a formation of troops, ships, or aircraft.
-                iii.codename ECHELON. Homage to my previous career.
-
-                The significance to the term for me, reflects 
-                both its hierarchical and operational meanings. 
-
-
-                An echelon is a separate level of command. 
-
-                In addition, there is also a separate echelon known as a non-echelon command. 
-                A non-echelon command is a unit or units, an organization, or an area under the command of one individual. It does not correspond to any of the other echelons
-
-                Echelon formation
-                Groups/contacts/formation with wingman displaced approximately 45 degrees behind leader's 3/9 (o'clock) line
-
-                X
-                X
-                X
-                X
-
-
-                Division
-                An echelon of command and tactical formation that employs brigade combat teams, multi-functional brigades, and functional brigades to achieve objectives on land.
-
-                Corps
-                An echelon of command and tactical formation that employs divisions, multi-functional brigades, and functional brigades to achieve objectives on land.
-
-                    </p>
-
-                </div>
-
-
-
-                <div className="scene-container relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8" id="">
-                    <h2 className="text-2xl font-semibold mb-4">Skills and Tools</h2>
-                    <ul className="list-disc ml-5">
-                        <li>Technology 1</li>
-                        <li>Technology 2</li>
-                        <li>Soft Skill 1</li>
-                    </ul>            
                 </div>
 
                 <div className="scene-container relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8" id="">
@@ -243,19 +304,3 @@ export default function About() {
                 </div> */}
 
             </div>
-            </div>
-        </div>
-    );
-}
-
-//<ul>
-//             <li>Coin 1: name here</li>
-//             <li>New Zealand Defence Force Veteran Coin. Purchased from creator.</li>
-//             <li>Gov Comms Sec B Challenge Coin. Unofficially presented by colleagues.</li>
-//             <li>Director Support to Military Operations Australia. Issued by CDR _name.</li>
-//             <li>Director Support to Military Operations New Zealand. Issued by CDR Gavin Birrell.</li>
-//             <li>Australian Signals Directorate Challenge Coin</li>
-//             <li>HMNZS Otago Challenge Coin: Issued to Intelligence Team by Ships Captain.</li>
-//             <li>Naval Operations Support Unit: Royal New Zaland Navy: Issued by unit Commander.</li>
-//             <li>1 New Zealand Infantry Regiment: Purchased to commemorate personnel killed in action in Afghanistan.</li>
-//         </ul>

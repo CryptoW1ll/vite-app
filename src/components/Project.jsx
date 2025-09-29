@@ -30,22 +30,13 @@ export default function Project() {
       description:
         "An action-packed game where you track and capture fugitives in high-intensity missions.",
       image: "/images/Project_FugitiveApprehensionTaskForce(WIP).png",
-      link: "https://example.com/project3",
+      link: "/projects",
       responsibility: "I have chosen to understake the project as a solo developer. Please click the link below to see the project in its current state.",
       team: "Solo Developer",
       length: "9 months"
 
-    },
-    {
-      id: 4,
-      name: "",
-      description: "",
-      image: "",
-      link: "",
-      responsibility: "",
-      team: "",
-      length: "",
     }
+    
   ];
 
   return (
@@ -53,7 +44,7 @@ export default function Project() {
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
-          <h2 className="text-base font-semibold text-indigo-600">Our Projects</h2>
+          <h2 className="text-base font-semibold text-white bg-gray-900 px-3 py-1 rounded">Our Projects</h2>
           <p className="mt-2 text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
             Explore Our Work
           </p>
@@ -66,7 +57,7 @@ export default function Project() {
         <div className="mt-16 mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-8 justify-center">
           {projectDetails.map((project) => (
             <div key={project.id} className="border p-6 rounded-lg shadow-lg">
-              <h2 className="text-xl font-bold text-gray-600">{project.name}</h2>
+              <h2 className="text-xl font-bold text-white bg-gray-900 px-3 py-1 rounded">{project.name}</h2>
               <p className="text-lg text-gray-600 mt-2">Team: {project.team}</p>
               <p className="text-lg text-gray-600 mt-2">Length: {project.length}</p>
               <p className="text-lg text-gray-600 mt-2">{project.description}</p>
@@ -84,9 +75,9 @@ export default function Project() {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-500 hover:underline mt-4 block font-semibold"
+                className="mt-4 inline-block bg-gray-900 text-white px-4 py-2 rounded shadow hover:bg-gray-800 transition-colors font-semibold text-center"
+                aria-label={`View ${project.name} project`}
               >
-                
                 View Project
               </a>
             </div>

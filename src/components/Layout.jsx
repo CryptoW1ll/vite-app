@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 
 const Layout = () => (
   <div className="flex flex-col min-h-screen">
-    {/* <Navbar /> */}
+    <Navbar />
     <main className="flex-grow">
       <Outlet />
     </main>
