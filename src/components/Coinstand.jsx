@@ -118,18 +118,30 @@ export default function Coinstand() {
   //const coinstand = "/models/coinstand.fbx";
   //return didCatch ? ( <ErrorFallback error={error} />) : (
   return (
+    // <>
+    //     <div className="h-screen w-screen flex items-center justify-center bg-black relative">
+    // <Canvas 
+    //   fallback={<div>Sorry no WebGL supported!</div>}
+    //   scene={{ background: new Color(0x000000) }} 
+    //   camera={{ position: [0, 2, 12], fov: 45 }}
+    //   shadows={{
+    //     type: PCFSoftShadowMap,
+    //     bias: -0.0001
+    //   }}
+    //   className="w-full h-full" style={{  }}
+    // >\
     <>
-        <div className="h-screen w-screen flex items-center justify-center bg-black relative">
-    <Canvas 
-      fallback={<div>Sorry no WebGL supported!</div>}
-      scene={{ background: new Color(0x000000) }} 
-      camera={{ position: [0, 2, 12], fov: 45 }}
-      shadows={{
-        type: PCFSoftShadowMap,
-        bias: -0.0001
-      }}
-      className="w-full h-full" style={{  }}
-    >
+        <div className="h-[400px] w-full flex items-center justify-center bg-black relative"> {/* Fixed height */}
+          <Canvas 
+            fallback={<div>Sorry no WebGL supported!</div>}
+            scene={{ background: new Color(0x000000) }} 
+            camera={{ position: [0, 2, 12], fov: 45 }}
+            shadows={{
+              type: PCFSoftShadowMap,
+              bias: -0.0001
+            }}
+            className="w-full h-full"
+          >
       <ambientLight intensity={0.2} />
 
       <spotLight 

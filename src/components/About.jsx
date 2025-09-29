@@ -113,41 +113,45 @@ function EducationMilitaryGrid() {
 }
 
 function CoinCollectionSection() {
-        return (
-            <section className="mb-8">
-                <h2 className="text-2xl font-semibold mb-2 text-white">Coin Collection</h2>
-                                <div className="mt-4"><Coinstand /></div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-                    <div className="bg-gray-700 p-4 rounded">
-                        <p>United States Pentagon September 11 Challenge Coin. Sparked my interest in Military and Intelligence.</p>
-                    </div>
-                    <div className="bg-gray-700 p-4 rounded">
-                        <p>New Zealand Defence Force Veteran Challenge Coin. Design matches the official veteran pin.</p>
-                    </div>
-                    <div className="bg-gray-700 p-4 rounded">
-                        <p>Government Communications Security Bureau Challenge Coin. Presented by colleagues.</p>
-                    </div>
-                    <div className="bg-gray-700 p-4 rounded">
-                        <p>Director Support to Military Operations Australia Challenge Coin. Presented by Unit Commander for Operation OKRA.</p>
-                    </div>
-                    <div className="bg-gray-700 p-4 rounded">
-                        <p>Director Support to Military Operations New Zealand Challenge Coin. Presented by the Unit Commander.</p>
-                    </div>
-                    <div className="bg-gray-700 p-4 rounded">
-                        <p>Australian Signals Directorate Challenge Coin. Presented at the end of my Tour of Duty for Operation OKRA.</p>
-                    </div>
-                    <div className="bg-gray-700 p-4 rounded">
-                        <p>Rear Admiral John Martin Chief of Navy Challenge Coin. Presented after briefing on NZDF's counter narcotics operations.</p>
-                    </div>
-                    <div className="bg-gray-700 p-4 rounded">
-                        <p>Naval Operations Support Unit Challenge Coin. Presented by the Unit Commander.</p>
-                    </div>
-                    <div className="bg-gray-700 p-4 rounded">
-                        <p>1st Infantry Battalion Challenge Coin. Purchased to commemorate personnel Killed in Action in Afghanistan.</p>
-                    </div>
+    return (
+        <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-2 text-white">Coin Collection</h2>
+            <div className="mt-4 flex items-center w-full">
+                <div className="max-w-3xl w-full">
+                    <Coinstand />
                 </div>
-            </section>
-        );
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+                <div className="bg-gray-700 p-4 rounded">
+                    <p>United States Pentagon September 11 Challenge Coin. Sparked my interest in Military and Intelligence.</p>
+                </div>
+                <div className="bg-gray-700 p-4 rounded">
+                    <p>New Zealand Defence Force Veteran Challenge Coin. Design matches the official veteran pin.</p>
+                </div>
+                <div className="bg-gray-700 p-4 rounded">
+                    <p>Government Communications Security Bureau Challenge Coin. Presented by colleagues.</p>
+                </div>
+                <div className="bg-gray-700 p-4 rounded">
+                    <p>Director Support to Military Operations Australia Challenge Coin. Presented by Unit Commander for Operation OKRA.</p>
+                </div>
+                <div className="bg-gray-700 p-4 rounded">
+                    <p>Director Support to Military Operations New Zealand Challenge Coin. Presented by the Unit Commander.</p>
+                </div>
+                <div className="bg-gray-700 p-4 rounded">
+                    <p>Australian Signals Directorate Challenge Coin. Presented at the end of my Tour of Duty for Operation OKRA.</p>
+                </div>
+                <div className="bg-gray-700 p-4 rounded">
+                    <p>Rear Admiral John Martin Chief of Navy Challenge Coin. Presented after briefing on NZDF's counter narcotics operations.</p>
+                </div>
+                <div className="bg-gray-700 p-4 rounded">
+                    <p>Naval Operations Support Unit Challenge Coin. Presented by the Unit Commander.</p>
+                </div>
+                <div className="bg-gray-700 p-4 rounded">
+                    <p>1st Infantry Battalion Challenge Coin. Purchased to commemorate personnel Killed in Action in Afghanistan.</p>
+                </div>
+            </div>
+        </section>
+    );
 }
 
 function HobbiesSection() {
