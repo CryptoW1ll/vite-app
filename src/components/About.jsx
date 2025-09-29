@@ -117,9 +117,9 @@ function CoinCollectionSection() {
         <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-2 text-white">Coin Collection</h2>
             <div className="flex justify-center items-center w-full py-4">
-                <div className="w-full max-w-2xl md:max-w-3xl lg:max-w-4xl px-2 md:px-6">
+                {/* <div className="w-full max-w-2xl md:max-w-3xl lg:max-w-4xl px-2 md:px-6"> */}
                     <Coinstand />
-                </div>
+                {/* </div> */}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
                 <div className="bg-gray-700 p-4 rounded">
