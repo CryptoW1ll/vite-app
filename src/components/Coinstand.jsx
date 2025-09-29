@@ -135,7 +135,7 @@ export default function Coinstand() {
           <Canvas 
             fallback={<div>Sorry no WebGL supported!</div>}
             scene={{ background: new Color(0x000000) }} 
-            camera={{ position: [0, 2, 12], fov: 45 }}
+            camera={{ position: [0, 2, 8], fov: 45 }}
             shadows={{
               type: PCFSoftShadowMap,
               bias: -0.0001

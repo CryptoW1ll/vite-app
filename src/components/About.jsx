@@ -116,8 +116,8 @@ function CoinCollectionSection() {
     return (
         <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-2 text-white">Coin Collection</h2>
-            <div className="mt-4 flex items-center w-full">
-                <div className="max-w-3xl w-full">
+            <div className="flex justify-center items-center w-full py-4">
+                <div className="w-full max-w-2xl md:max-w-3xl lg:max-w-4xl px-2 md:px-6">
                     <Coinstand />
                 </div>
             </div>
