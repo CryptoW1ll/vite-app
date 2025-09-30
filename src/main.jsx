@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       { path: 'about', element: <About /> },
       { path: 'projects', element: <Project /> },
       { path: 'projects/:projectId', element: <Project /> },
-  { path: 'fatf', element: <FATFPage /> },
+      { path: 'fatf', element: <FATFPage /> },
       // { path: 'fatf', element: <FATF /> },
       { path: 'contact', element: <Contact /> },
     ],
