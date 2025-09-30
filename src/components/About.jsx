@@ -1,12 +1,14 @@
 import React from "react";
 import Coinstand from "./Coinstand.jsx";
 import SkillBalanceBar from "./SkillBalanceBar.jsx";
+import Education from "../components/Education.jsx";
+import TechSlider from "../components/TechSlider.jsx";
 import '../index.css';
 
 function AboutSummary() {
     return (
         <section className="flex flex-col md:flex-row gap-8 mb-8 items-center">
-            <img src="/images/Avatar1.png" alt="Avatar" className="w-48 h-48 rounded-lg shadow-lg object-cover" />
+            <img src="/images/Avatar.png" alt="Avatar" className="w-48 h-48 rounded-full shadow-lg object-cover" />
             <div>
                 <h1 className="text-4xl font-bold mb-2 text-white">About Me</h1>
                 <p className="mb-2">Hi, I'm <strong>Will Fowlds</strong>, a <strong>Developer</strong> with a passion for <strong>Game Development</strong>. With a background in <strong>C#, Unity Engine</strong>, I love creating <strong>unique gaming experiences</strong>.</p>
@@ -167,8 +169,30 @@ export default function About() {
     return (
         <div className="max-w-5xl mx-auto px-4 py-8">
             <AboutSummary />
+            <a 
+                href="/documents/Resume.docx" 
+                download 
+                className="inline-block"
+              >
+                <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
+                  Download Resume
+                </button>
+            </a>
+
+            <TechSlider />
+            <Education />
+
             <PersonalitySection />
             <EducationMilitaryGrid />
+            {/* <a 
+                href="/documents/Resume.docx" 
+                download 
+                className="inline-block"
+              >
+                <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
+                  Download Resume
+                </button>
+              </a> */}
             <CoinCollectionSection />
             {/* <HobbiesSection /> */}
         </div>

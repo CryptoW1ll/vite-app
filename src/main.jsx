@@ -10,7 +10,8 @@ import Homepage from './components/Homepage.jsx'
 import NotFound404 from './components/NotFound404'
 import About from './components/About'
 import Project from './components/Project'
-import FATF from './components/FATF'
+// import FATF from './components/FATF'
+import FATFPage from './components/FATFPage.jsx'
 import Contact from './components/Contact.jsx'
 import Layout from './components/Layout.jsx'
 
@@ -24,7 +25,8 @@ const router = createBrowserRouter([
       { path: 'about', element: <About /> },
       { path: 'projects', element: <Project /> },
       { path: 'projects/:projectId', element: <Project /> },
-      { path: 'fatf', element: <FATF /> },
+  { path: 'fatf', element: <FATFPage /> },
+      // { path: 'fatf', element: <FATF /> },
       { path: 'contact', element: <Contact /> },
     ],
   },

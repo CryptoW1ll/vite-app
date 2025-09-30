@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.5.0",
+    "@emailjs/browser": "^4.4.1",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@react-three/drei": "^10.0.5",
     "@react-three/fiber": "^9.1.0",
+    "@tomickigrzegorz/react-circular-progress-bar": "^1.1.2",
+    "emailjs": "^4.0.3",
     "firebase": "^11.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

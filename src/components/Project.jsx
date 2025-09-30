@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Project() {
   const projectDetails = [
@@ -30,7 +31,7 @@ export default function Project() {
       description:
         "An action-packed game where you track and capture fugitives in high-intensity missions.",
       image: "/images/Project_FugitiveApprehensionTaskForce(WIP).png",
-      link: "/projects",
+      link: "/fatf",
       responsibility: "I have chosen to understake the project as a solo developer. Please click the link below to see the project in its current state.",
       team: "Solo Developer",
       length: "9 months"
@@ -71,17 +72,81 @@ export default function Project() {
               
               <p className="text-lg text-gray-600 mt-2">What I did: {project.responsibility}</p>
 
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-block bg-gray-900 text-white px-4 py-2 rounded shadow hover:bg-gray-800 transition-colors font-semibold text-center"
-                aria-label={`View ${project.name} project`}
-              >
-                View Project
-              </a>
+              {project.link.startsWith("/") ? (
+                <Link
+                  to={project.link}
+                  className="mt-4 inline-block bg-gray-900 text-white px-4 py-2 rounded shadow hover:bg-gray-800 transition-colors font-semibold text-center"
+                  aria-label={`View ${project.name} project`}
+                >
+                  View Project
+                </Link>
+              ) : (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-block bg-gray-900 text-white px-4 py-2 rounded shadow hover:bg-gray-800 transition-colors font-semibold text-center"
+                  aria-label={`View ${project.name} project`}
+                >
+                  View Project
+                </a>
+              )}
             </div>
           ))}
+        </div>
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          {/* GitHub Contributions Section */}
+          <div className="mt-24">
+            <h2 className="text-3xl font-bold text-white text-center mb-4">
+              GitHub Contributions
+            </h2>
+            <p className="text-gray-400 text-center mb-10 max-w-2xl mx-auto">
+              Here's a snapshot of my coding activity over the past year.
+            </p>
+
+          <div className="grid grid-cols-1 gap-8">
+            {/* Contribution Calendar spans full width */}
+            <div className="bg-gray-800 p-6 rounded-xl shadow-md border border-gray-700 max-w-4xl mx-auto">
+              <h3 className="text-white text-lg font-semibold mb-4 text-center">
+                Contribution Calendar
+              </h3>
+              <img
+                src="https://ghchart.rshah.org/cryptow1ll"
+                alt="GitHub contribution calendar"
+                loading="lazy"
+                className="w-full object-contain"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {/* GitHub Streak Stats */}
+              <div className="bg-gray-800 p-6 rounded-xl shadow-md border border-gray-700">
+                <h3 className="text-white text-lg font-semibold mb-4 text-center">
+                  Coding Streak
+                </h3>
+                <img
+                  src="https://github-readme-streak-stats.herokuapp.com/?user=cryptow1ll"
+                  alt="GitHub Streak"
+                  loading="lazy"
+                  className="w-full object-contain"
+                />
+              </div>
+
+              {/* GitHub Repo/Contributions Stats */}
+              <div className="bg-gray-800 p-6 rounded-xl shadow-md border border-gray-700">
+                <h3 className="text-white text-lg font-semibold mb-4 text-center">
+                  GitHub Stats
+                </h3>
+                <img
+                  src="https://github-readme-stats.vercel.app/api?username=cryptow1ll&show_icons=true&theme=default"
+                  alt="GitHub stats"
+                  loading="lazy"
+                  className="w-full object-contain"
+                />
+              </div>
+            </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
