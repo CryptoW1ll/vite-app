@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import { Field, Label, Switch } from '@headlessui/react'
 import emailjs from '@emailjs/browser'
+import GoogleWorkspace from '../components/GoogleWorkspace.jsx';
+import GoogleBanner from '../components/GoogleBanner.jsx';
 
 export default function Contact() {
   const [agreed, setAgreed] = useState(false)
@@ -31,14 +33,14 @@ export default function Contact() {
     console.log('Sending email with data:', formData);
     // Send email with EmailJS
     emailjs.send(
-      'service_s1o2v7q',      // EmailJS service ID
-      'template_42474fl',     // EmailJS template ID
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
       {
         firstName: formData.firstName,
         email: formData.email,
         message: formData.message,
       },
-      '07IjlWEFoEKFLTXrp'       // EmailJS public key
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     )
     .then(() => {
       alert('Thank you for your message! We will get back to you soon.')
@@ -56,6 +58,7 @@ export default function Contact() {
   return (
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
       {/* ...your existing JSX markup here, no change... */}
+      <p className="text-center text-gray-600">Have an idea for a Mobile App? A game project? Let's talk!</p>
       <form onSubmit={handleSubmit} action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
@@ -142,6 +145,12 @@ export default function Contact() {
           </button>
         </div>
       </form>
+      
+      {/* Google Workspace Affiliate Section */}
+      <GoogleBanner />
+      {/* <GoogleWorkspace /> */}
     </div>
+
+ 
   )
 }
