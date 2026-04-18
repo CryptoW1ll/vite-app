@@ -74,7 +74,7 @@ export default function Contact() {
               type="text"
               value={formData.firstName}
               onChange={handleChange}
-              className="focus:outline-indigo-600 rounded-md"
+              className="block w-full border rounded-md px-3 py-2 text-sm focus:outline focus:outline-2 focus:outline-indigo-600"
               required
             />
           </div>
@@ -89,7 +89,7 @@ export default function Contact() {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="focus:outline-indigo-600 rounded-md"
+              className="block w-full border rounded-md px-3 py-2 text-sm focus:outline focus:outline-2 focus:outline-indigo-600"
               required
             />
           </div>
@@ -104,7 +104,7 @@ export default function Contact() {
               rows={4}
               value={formData.message}
               onChange={handleChange}
-              className="focus:outline-indigo-600 rounded-md"
+              className="block w-full border rounded-md px-3 py-2 text-sm focus:outline focus:outline-2 focus:outline-indigo-600"
               required
             />
           </div>
@@ -115,4 +115,4 @@ export default function Contact() {
             aria-hidden="true"
             checked={agreed === null}
             /* Ask... */
-            disabled
+            disabled={false}
