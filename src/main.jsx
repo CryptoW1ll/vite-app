@@ -15,6 +15,7 @@ import FATFPage from './components/FATFPage.jsx'
 import Contact from './components/Contact.jsx'
 import Layout from './components/Layout.jsx'
 import SteamTitles from './components/SteamTitles.jsx'
+import LandingPage from './components/LandingPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
       // { path: 'fatf', element: <FATF /> },
       { path: 'contact', element: <Contact /> },
       { path: 'titles', element: <SteamTitles /> },
+      { path: 'landing', element: <LandingPage /> }
     ],
   },
 ],
