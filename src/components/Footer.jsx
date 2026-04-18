@@ -2,10 +2,12 @@ import React from "react";
 
 export default function Footer() {
 
+    const currentYear = new Date().getFullYear();
+
     return (
         <footer className="bg-gray-900 text-white p-4 text-center">
             <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <p className="text-sm mb-2">© 2025 Echelon Interactive Studio. All rights reserved.</p>
+                <p className="text-sm mb-2">© {currentYear} Echelon Interactive Studio. All rights reserved.</p>
 
                 <div className="flex flex-wrap justify-center gap-2 text-sm">
                 <a href="#" className="text-gray-400 hover:text-white">Privacy Policy</a>

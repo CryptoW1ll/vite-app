@@ -7,11 +7,38 @@ import '../index.css';
 
 function AboutSummary() {
     return (
+        // <section className="flex flex-col md:flex-row gap-8 mb-8 items-center">
+        //     <img src="/images/Avatar.png" alt="Avatar" className="w-48 h-48 rounded-full shadow-lg object-cover" />
+        //     <div>
+        //         <h1 className="text-4xl font-bold mb-2 text-white">About Me</h1>
+        //         <p className="mb-2 text-white">Hi, I'm <strong>Will Fowlds</strong>, a <strong>Developer</strong> with a passion for <strong>Game Development</strong>. With a background in <strong>C#, Unity Engine</strong>, I love creating <strong>unique gaming experiences</strong>.</p>
+        //         <div className="flex flex-wrap gap-2 mt-2">
+        //             <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Leadership</span>
+        //             <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Communication</span>
+        //             <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Mentorship</span>
+        //             <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Resiliency</span>
+        //             <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Building Relationships</span>
+        //         </div>
+        //     </div>
+        // </section>
+
         <section className="flex flex-col md:flex-row gap-8 mb-8 items-center">
             <img src="/images/Avatar.png" alt="Avatar" className="w-48 h-48 rounded-full shadow-lg object-cover" />
             <div>
                 <h1 className="text-4xl font-bold mb-2 text-white">About Me</h1>
-                <p className="mb-2 text-white">Hi, I'm <strong>Will Fowlds</strong>, a <strong>Developer</strong> with a passion for <strong>Game Development</strong>. With a background in <strong>C#, Unity Engine</strong>, I love creating <strong>unique gaming experiences</strong>.</p>
+
+                <p className="mb-4 text-white">
+                    Hi, I’m <strong>Will Fowlds</strong> — an <strong>Operator for Lockheed Martin Space</strong> By day, I operate in a high-responsibility environment where <strong>precision, system awareness, and decision-making under pressure</strong> are critical, shaping how I approach problem-solving and performance.
+                </p>
+
+                <p className="mb-4 text-white">
+                    Alongside my primary role, I am a Developer with a strong technical foundation and a growing focus on <strong>game development as a secondary career</strong>. Specialising in C# and the Unity Engine, I build interactive experiences through my studio, Echelon Interactive. Game development has evolved from a passion into a disciplined secondary career, where I focus on creating unique, systems-driven gameplay experiences with an emphasis on structure, scalability, and player engagement.
+                </p>
+
+                <p className="mb-4 text-white">
+                    I place strong emphasis on continuous growth, both professionally and personally, ensuring I develop not just technically, but as a well-rounded operator and developer.
+                </p>
+
                 <div className="flex flex-wrap gap-2 mt-2">
                     <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Leadership</span>
                     <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Communication</span>
@@ -68,6 +95,9 @@ function PersonalitySection() {
     );
 }
 
+// Update about me with Current job/ Title, 
+// Moved to TechSlider: Confirm Technology Exposure information is accurate and up to date
+// Determine if Grades is appropriate to include
 
 function EducationMilitaryGrid() {
     return (
@@ -77,13 +107,15 @@ function EducationMilitaryGrid() {
                 <div className="bg-gray-800 rounded p-6">
                     <h2 className="text-2xl font-semibold mb-2 text-white">Education</h2>
                     <ul className="list-disc ml-5 text-white">
-                        <li>2005: First year student in Bachelors of Information Technology at Otago Polytechnic</li>
-                        <li>2009 - 2019: Numerous Military and Leadership Courses
+                        {/* <li>2005: First year student in Bachelors of Information Technology at Otago Polytechnic</li> */}
+                        {/* <li>2009 - 2019: Numerous Military and Leadership Courses
                             <ul className="list-disc ml-5">
                                 <li>Blanchards Leadership Development Framework</li>
                                 <li>NZDF Lead Self/Teams/Leaders Development Programmes</li>
                             </ul>
-                        </li>
+                        </li> */}
+                        <li>2012: Blanchards Leadership Development Framework</li>
+                        <li>2017: NZDF Lead Self/Teams/Leaders Development Programmes</li>
                         <li>2021: Level 4 Certificate in Small Business Management at Southern Institute of Technology</li>
                         <li>2022: Level 5, 6 papers from a Software Engineering Degree at Media Design School</li>
                         <li>2023-2025: Bachelors of Information Technology at Southern Institute of Technology</li>
@@ -180,8 +212,8 @@ export default function About() {
                 </button>
             </a>
 
-            <TechSlider />
-            <Education />
+            {/* <TechSlider />
+            <Education /> */}
 
             <PersonalitySection />
             <EducationMilitaryGrid />
