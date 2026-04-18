@@ -8,6 +8,7 @@ const navigation = [
   { name: 'About Me', href: '/about' },
   // { name: 'FATF', href: '/fatf' },
   { name: 'Contact', href: '/contact' },
+  { name: 'Landing Page', href: '/landing' },
 ]
 
 function classNames(...classes) {
@@ -18,8 +19,8 @@ function classNames(...classes) {
 export default function Navbar() {
   const location = useLocation();
   return (
-    <Disclosure as="nav" className="bg-gray-800">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <Disclosure as="nav" className="bg-bg-surface text-text-primary">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button*/}
@@ -34,10 +35,8 @@ export default function Navbar() {
             <div className="flex shrink-0 items-center">
               <img
                 alt="Your Company"
-                // src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
                 src="./ESLogo.png"
-
-                className="h-8 w-auto"
+                className="h-12 w-auto rounded focus:ring-2 focus:ring-focus-ring"
               />
             </div>
             <div className="hidden sm:ml-6 sm:block">
@@ -50,7 +49,7 @@ export default function Navbar() {
                       href={item.href}
                       aria-current={isActive ? 'page' : undefined}
                       className={classNames(
-                        isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        isActive ? 'bg-accent-primary text-text-inverse' : 'text-text-secondary hover:bg-bg-subtle hover:text-text-primary',
                         'rounded-md px-3 py-2 text-sm font-medium',
                       )}
                     >
@@ -134,7 +133,7 @@ export default function Navbar() {
                 aria-current={isActive ? 'page' : undefined}
                 className={classNames(
                   isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                  'block rounded-md px-3 py-2 text-base font-medium',
+                  'block rounded-md px-3 py-2 text-sm font-medium focus:ring-2 focus:ring-focus-ring',
                 )}
               >
                 {item.name}
