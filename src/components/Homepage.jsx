@@ -1,24 +1,22 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import PlanetEarth from './PlanetEarth.jsx';
 import Echelon from './Echelon.jsx';
-import TagManager from 'react-gtm-module';
-
-
 
 function Homepage() {
     useEffect(() => {
-        TagManager.initialize({ gtmId: 'GTM-TKLPNP4W' });
-      }, []);
+        console.log('Google Tag Manager can be initialized here.');
+    }, []);
+
     return (
-        <div className="flex flex-col min-h-screen bg-black">
+        <div className="flex flex-col min-h-screen bg-canvas text-primary">
             <main className="flex-grow relative">
                 <PlanetEarth />
-                <Echelon/>
-                
+                <Echelon />
             </main>
             <Footer />
         </div>
     );
-} export default Homepage;
+}
+
+export default Homepage;
