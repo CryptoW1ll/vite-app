@@ -2,32 +2,43 @@ import React from 'react';
 
 function LandingPage() {
     return (
-        <div className="bg-canvas text-primary">
-            <header className="bg-accent.primary text-inverse py-6">
-                <div className="container mx-auto px-4">
-                    <h1 className="text-3xl font-bold">Welcome to Your Business</h1>
-                    <p className="text-lg">Making a difference, one step at a time</p>
+        <div className="bg-canvas text-primary min-h-screen">
+            <section className="relative flex items-center justify-center py-32 text-center">
+                <div>
+                    <h1 className="text-5xl font-bold sm:text-7xl">Welcome to the Future</h1>
+                    <p className="mt-4 text-lg sm:text-xl text-secondary font-medium">
+                        Unlock unmatched possibilities with AI-driven solutions.
+                    </p>
+                    <a href="#explore" className="inline-block mt-6 rounded bg-accent-primary hover:bg-accent-primary-hover px-6 py-3 text-lg font-semibold text-inverse">Explore Now</a>
                 </div>
-            </header>
-            <main className="py-16">
-                <div className="container mx-auto px-4">
-                    <section className="mb-12">
-                        <h2 className="text-2xl font-semibold mb-4">What We Offer</h2>
-                        <p>Discover our unique range of products and services that are designed to meet your needs.</p>
-                    </section>
-                    <section className="mb-12">
-                        <h2 className="text-2xl font-semibold mb-4">Why Choose Us?</h2>
-                        <p>Our commitment to quality and customer satisfaction sets us apart.</p>
-                    </section>
-                    <section>
-                        <h2 className="text-2xl font-semibold mb-4">Get Started Today</h2>
-                        <button className="bg-accent.primary hover:bg-accent.primary.hover text-inverse px-6 py-3 rounded">Join Us</button>
-                    </section>
+            </section>
+
+            <section id="explore" className="py-20 px-8 sm:px-16">
+                <div className="max-w-5xl mx-auto">
+                    <div className="mb-8 text-center">
+                        <h2 className="text-4xl font-semibold">What Makes Us Stand Out</h2>
+                        <p className="mt-2 text-lg text-secondary">Crafting tailored AI solutions with cutting-edge infrastructure.</p>
+                    </div>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <div className="p-6 bg-surface rounded-lg shadow">
+                            <h3 className="text-xl font-medium">Precision Design</h3>
+                            <p className="mt-2 text-sm text-secondary">Adopting aesthetics from Linear, Stripe, and Vercel for sharp UI designs.</p>
+                        </div>
+                        <div className="p-6 bg-surface rounded-lg shadow">
+                            <h3 className="text-xl font-medium">Scalable Performance</h3>
+                            <p className="mt-2 text-sm text-secondary">Your operations scale seamlessly on our robust cloud-backed architecture.</p>
+                        </div>
+                        <div className="p-6 bg-surface rounded-lg shadow">
+                            <h3 className="text-xl font-medium">Results that Matter</h3>
+                            <p className="mt-2 text-sm text-secondary">Analytics-driven decisions backed by an intuitive interface.</p>
+                        </div>
+                    </div>
                 </div>
-            </main>
-            <footer className="bg-surface.alt py-6">
-                <div className="container mx-auto px-4">
-                    <p>&copy; 2026 Your Business. All rights reserved.</p>
+            </section>
+
+            <footer className="bg-surface-alt py-12">
+                <div className="max-w-4xl mx-auto text-center">
+                    <p className="text-sm text-secondary">&copy; 2026 AI Masters. All rights reserved.</p>
                 </div>
             </footer>
         </div>
