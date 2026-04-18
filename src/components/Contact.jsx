@@ -110,9 +110,38 @@ export default function Contact() {
           </div>
         </div>
 
-        <Field className="text-secondary flex gap-4">
+        <Field className="mt-8 flex gap-4 text-secondary">
           <Switch
-            aria-hidden="true"
-            checked={agreed === null}
-            /* Ask... */
-            disabled={false}
+            checked={agreed}
+            onChange={setAgreed}
+            className={`${agreed ? 'bg-indigo-600' : 'bg-gray-300'} relative inline-flex h-6 w-11 flex-none cursor-pointer rounded-full transition-colors duration-200 ease-in-out`}
+          >
+            <span className="sr-only">Agree to privacy policy</span>
+            <span
+              aria-hidden="true"
+              className={`${agreed ? 'translate-x-5' : 'translate-x-0'} pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out`}
+            />
+          </Switch>
+          <Label className="text-sm leading-6">
+            I agree to the privacy policy and consent to being contacted about my inquiry.
+          </Label>
+        </Field>
+
+        <div className="mt-10">
+          <button
+            type="submit"
+            disabled={!isFormValid}
+            className="w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-500 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            Send message
+          </button>
+        </div>
+      </form>
+
+      <div className="mx-auto mt-12 max-w-xl">
+        <GoogleBanner />
+        <GoogleWorkspace />
+      </div>
+    </div>
+  );
+}
