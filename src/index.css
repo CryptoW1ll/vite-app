@@ -4,10 +4,10 @@
 
 
 canvas {
-  position: 'relative'; 
-  width: '100vw';
-  height: '100vh';
-  overflow: 'hidden';
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 /* html, body {
@@ -26,7 +26,7 @@ html, body {
 }
 
 main {
-  min-height: calc(100vh - FOOTER_HEIGHT); /* if you have sticky footers */
+  min-height: calc(100vh - 4rem);
 }
 
 /* For full safe viewport on newer iPhones */

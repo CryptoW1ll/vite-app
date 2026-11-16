@@ -58,11 +58,21 @@ const techIcons = [
 
 export default function TechSlider() {
   const [offset, setOffset] = useState(0);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const sliderRef = useRef(null);
   const itemWidth = 112; 
   const cycleWidth = itemWidth * techIcons.length;
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const updateMotionPreference = () => setReducedMotion(mediaQuery.matches);
+    updateMotionPreference();
+    mediaQuery.addEventListener('change', updateMotionPreference);
+
+    if (mediaQuery.matches) {
+      return () => mediaQuery.removeEventListener('change', updateMotionPreference);
+    }
+
     let animationFrameId;
     let lastTimestamp;
     const speed = 40; // pixels per second
@@ -82,8 +92,11 @@ export default function TechSlider() {
 
     animationFrameId = requestAnimationFrame(animate);
 
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [cycleWidth]);
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      mediaQuery.removeEventListener('change', updateMotionPreference);
+    };
+  }, [cycleWidth, reducedMotion]);
 
   return (
     <div className="w-full overflow-hidden mt-8">
@@ -94,7 +107,7 @@ export default function TechSlider() {
           className="flex will-change-transform"
           style={{ transform: `translateX(${offset}px)` }}
         >
-          {[...techIcons, ...techIcons].map((tech, index) => (
+          {(reducedMotion ? techIcons : [...techIcons, ...techIcons]).map((tech, index) => (
             <div
               key={`${tech.name}-${index}`}
               className="mx-2 flex h-[88px] w-[96px] flex-shrink-0 flex-col items-center justify-center rounded-xl border border-slate-200 bg-white/95 px-2 text-slate-800 shadow-md"

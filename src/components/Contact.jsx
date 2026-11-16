@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Field, Label, Switch } from '@headlessui/react'
 import emailjs from '@emailjs/browser'
-import GoogleWorkspace from '../components/GoogleWorkspace.jsx';
 import GoogleBanner from '../components/GoogleBanner.jsx';
 
 export default function Contact() {
@@ -13,6 +13,8 @@ export default function Contact() {
     email: '',
     message: '',
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [status, setStatus] = useState({ type: '', message: '' })
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -22,35 +24,36 @@ export default function Contact() {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     if (!agreed) {
-      alert('Please agree to the privacy policy.')
+      setStatus({ type: 'error', message: 'Please agree to the privacy policy before sending your message.' })
       return
     }
 
-    console.log('Sending email with data:', formData);
-    // Send email with EmailJS
-    emailjs.send(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      {
-        firstName: formData.firstName,
-        email: formData.email,
-        message: formData.message,
-      },
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    )
-    .then(() => {
-      alert('Thank you for your message! We will get back to you soon.')
+    setIsSubmitting(true)
+    setStatus({ type: '', message: '' })
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          firstName: formData.firstName,
+          email: formData.email,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
       setFormData({ firstName: '', email: '', message: '' })
       setAgreed(false)
-    })
-    .catch((error) => {
-      console.error('Failed to send email:', error)
-      alert('Oops, something went wrong. Please try again later.')
-    })
+      setStatus({ type: 'success', message: 'Thank you for your message. We will get back to you soon.' })
+    } catch {
+      setStatus({ type: 'error', message: 'Your message could not be sent. Please try again later or email us directly.' })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const isFormValid = formData.firstName && formData.email && formData.message && agreed
@@ -59,7 +62,8 @@ export default function Contact() {
     <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
       {/* ...your existing JSX markup here, no change... */}
       <p className="text-center text-gray-600">Have an idea for a Mobile App? A game project? Let's talk!</p>
-      <form onSubmit={handleSubmit} action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">
+      <form onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl sm:mt-20" aria-busy={isSubmitting}>
+        <div className="sr-only" aria-live="polite" role="status">{status.message}</div>
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
             <label htmlFor="firstName" className="block text-sm/6 font-semibold text-gray-900">
@@ -73,6 +77,7 @@ export default function Contact() {
                 autoComplete="given-name"
                 value={formData.firstName}
                 onChange={handleChange}
+                disabled={isSubmitting}
                 className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                 required
               />
@@ -90,6 +95,7 @@ export default function Contact() {
                 autoComplete="email"
                 value={formData.email}
                 onChange={handleChange}
+                disabled={isSubmitting}
                 className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                 required
               />
@@ -106,6 +112,7 @@ export default function Contact() {
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}
+                disabled={isSubmitting}
                 className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600"
                 required
               />
@@ -116,6 +123,7 @@ export default function Contact() {
               <Switch
                 checked={agreed}
                 onChange={setAgreed}
+                disabled={isSubmitting}
                 className="group flex w-8 flex-none cursor-pointer rounded-full bg-gray-200 p-px ring-1 ring-inset ring-gray-900/5 transition-colors duration-200 ease-in-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 data-[checked]:bg-indigo-600"
               >
                 <span className="sr-only">Agree to policies</span>
@@ -127,9 +135,9 @@ export default function Contact() {
             </div>
             <Label className="text-sm/6 text-gray-600">
               By selecting this, you agree to our{' '}
-              <a href="#" className="font-semibold text-indigo-600">
+              <Link to="/privacy" className="font-semibold text-indigo-600">
                 privacy&nbsp;policy
-              </a>
+              </Link>
               .
             </Label>
           </Field>
@@ -137,13 +145,18 @@ export default function Contact() {
         <div className="mt-10">
           <button
             type="submit"
-            disabled={!isFormValid}
+            disabled={!isFormValid || isSubmitting}
             className={`block w-full rounded-md px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm
               ${isFormValid ? 'bg-indigo-600 hover:bg-indigo-500 focus-visible:outline-indigo-600' : 'bg-gray-300 cursor-not-allowed'}`}
           >
-            Let's talk
+            {isSubmitting ? 'Sending…' : "Let's talk"}
           </button>
         </div>
+        {status.message && (
+          <p className={`mt-4 text-sm ${status.type === 'success' ? 'text-green-700' : 'text-red-700'}`} role="alert">
+            {status.message}
+          </p>
+        )}
       </form>
       
       {/* Google Workspace Affiliate Section */}

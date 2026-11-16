@@ -1,24 +1,20 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Footer from './Footer';
-import PlanetEarth from './PlanetEarth.jsx';
+import React, { lazy, Suspense } from 'react';
 import Echelon from './Echelon.jsx';
-import TagManager from 'react-gtm-module';
+
+const PlanetEarth = lazy(() => import('./PlanetEarth.jsx'));
 
 
 
 function Homepage() {
-    useEffect(() => {
-        TagManager.initialize({ gtmId: 'GTM-TKLPNP4W' });
-      }, []);
     return (
         <div className="flex flex-col min-h-screen bg-black">
             <main className="flex-grow relative">
-                <PlanetEarth />
+                <Suspense fallback={<div className="flex min-h-[55vh] items-center justify-center bg-black text-gray-300">Loading interactive visual…</div>}>
+                    <PlanetEarth />
+                </Suspense>
                 <Echelon/>
                 
             </main>
-            <Footer />
         </div>
     );
 } export default Homepage;

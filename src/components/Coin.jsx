@@ -1,6 +1,5 @@
-import {extend, useFrame } from '@react-three/fiber';
+import { useFrame, useLoader } from '@react-three/fiber';
 import { Suspense, useState, useRef, useEffect } from 'react';
-import { useLoader } from '@react-three/fiber';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 import { useErrorBoundary } from 'use-error-boundary';
 
@@ -19,8 +18,6 @@ function CoinModel({ modelPath, hovered, active, ...props }) {
   const groupRef = useRef();
   const targetRotation = useRef(0);
   const flipSpeed = useRef(0);
-
-  const autoRotate = useRef(true);
 
    // Reset animation when active changes
    useEffect(() => {
@@ -49,13 +46,6 @@ function CoinModel({ modelPath, hovered, active, ...props }) {
       }
     }
 
-    // Hover effect
-    // if (hovered) 
-    // {
-    //   groupRef.current.rotation.z = Math.sin(Date.now() * 0.01) * 0.1;
-    // } else {
-    //   groupRef.current.rotation.z = 0;
-    // }
   });
 
   return (

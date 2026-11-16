@@ -30,7 +30,7 @@ const grades = [
   { name: "Web Application Implementation", grade: 90 },
   { name: "Programming", grade: 75 },
 
-  { name: "Advancecd Programming", grade: 81 },
+  { name: "Advanced Programming", grade: 81 },
   { name: "Mobile Application Development", grade: 90 },
   { name: "Systems Analysis and Design", grade: 81 },
   { name: "Database Management", grade: 70 },
@@ -66,14 +66,6 @@ const webDevelopment = [
   { name: "Web Services and Design Methodologies", grade: 70 },
 ];
 
-const programming = [
-  { name: "Fundamentals of Programming and Problem Solving", grade: 75 },
-  { name: "Programming", grade: 75 },
-  { name: "Advanced Programming", grade: 81 },
-  { name: "Mobile Application Development", grade: 90 },
-];
-
-
 function calculateAverageGrade(gameDevelopment) {
   const total = gameDevelopment.reduce((sum, course) => sum + course.grade, 0);
   return (total / gameDevelopment.length).toFixed(2);
@@ -89,11 +81,9 @@ export default function Education() {
 
   // Calculate the average grade for game development courses
   const averageGrade = calculateAverageGrade(gameDevelopment);
-  console.log("Average Grade for Game Development Courses:", averageGrade);
 
   // Calculate the average grade for web development courses
   const webAverageGrade = calculateAverageGrade(webDevelopment);
-  console.log("Average Grade for Web Development Courses:", webAverageGrade);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -109,6 +99,10 @@ export default function Education() {
   return (
     <div className="w-full overflow-hidden mt-8">
       <h3 className="text-2xl font-bold mb-4">Grades</h3>
+      <div className="mb-4 flex flex-wrap gap-4 text-sm text-gray-700" aria-label="Average grades">
+        <span>Game development average: <strong>{averageGrade}%</strong></span>
+        <span>Web development average: <strong>{webAverageGrade}%</strong></span>
+      </div>
       <div className="w-full overflow-hidden">
         <div
           ref={sliderRef}

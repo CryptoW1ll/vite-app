@@ -1,233 +1,216 @@
-import React from "react";
-import Coinstand from "./Coinstand.jsx";
-import SkillBalanceBar from "./SkillBalanceBar.jsx";
-import Education from "../components/Education.jsx";
-import TechSlider from "../components/TechSlider.jsx";
-import '../index.css';
+import { Link } from 'react-router-dom';
+import Coinstand from './Coinstand.jsx';
+import TechSlider from './TechSlider.jsx';
 
-function AboutSummary() {
-    return (
-        // <section className="flex flex-col md:flex-row gap-8 mb-8 items-center">
-        //     <img src="/images/Avatar.png" alt="Avatar" className="w-48 h-48 rounded-full shadow-lg object-cover" />
-        //     <div>
-        //         <h1 className="text-4xl font-bold mb-2 text-white">About Me</h1>
-        //         <p className="mb-2 text-white">Hi, I'm <strong>Will Fowlds</strong>, a <strong>Developer</strong> with a passion for <strong>Game Development</strong>. With a background in <strong>C#, Unity Engine</strong>, I love creating <strong>unique gaming experiences</strong>.</p>
-        //         <div className="flex flex-wrap gap-2 mt-2">
-        //             <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Leadership</span>
-        //             <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Communication</span>
-        //             <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Mentorship</span>
-        //             <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Resiliency</span>
-        //             <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Building Relationships</span>
-        //         </div>
-        //     </div>
-        // </section>
+const strengths = [
+  {
+    title: 'Systems thinking',
+    description: 'I break complex ideas into clear systems, priorities, and practical next steps.',
+  },
+  {
+    title: 'Technical problem-solving',
+    description: 'I combine development experience with structured analysis to build reliable interactive experiences.',
+  },
+  {
+    title: 'Project ownership',
+    description: 'I take responsibility for scope, documentation, communication, and delivering the work.',
+  },
+  {
+    title: 'Decisive under pressure',
+    description: 'High-responsibility operational work has shaped a calm, precise, and deliberate working style.',
+  },
+];
 
-        <section className="flex flex-col md:flex-row gap-8 mb-8 items-center">
-            <img src="/images/Avatar.png" alt="Avatar" className="w-48 h-48 rounded-full shadow-lg object-cover" />
-            <div>
-                <h1 className="text-4xl font-bold mb-2 text-white">About Me</h1>
-
-                <p className="mb-4 text-white">
-                    Hi, I’m <strong>Will Fowlds</strong> — an <strong>Operator for Lockheed Martin Space</strong> By day, I operate in a high-responsibility environment where <strong>precision, system awareness, and decision-making under pressure</strong> are critical, shaping how I approach problem-solving and performance.
-                </p>
-
-                <p className="mb-4 text-white">
-                    Alongside my primary role, I am a Developer with a strong technical foundation and a growing focus on <strong>game development as a secondary career</strong>. Specialising in C# and the Unity Engine, I build interactive experiences through my studio, Echelon Interactive. Game development has evolved from a passion into a disciplined secondary career, where I focus on creating unique, systems-driven gameplay experiences with an emphasis on structure, scalability, and player engagement.
-                </p>
-
-                <p className="mb-4 text-white">
-                    I place strong emphasis on continuous growth, both professionally and personally, ensuring I develop not just technically, but as a well-rounded operator and developer.
-                </p>
-
-                <div className="flex flex-wrap gap-2 mt-2">
-                    <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Leadership</span>
-                    <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Communication</span>
-                    <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Mentorship</span>
-                    <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Resiliency</span>
-                    <span className="bg-gray-700 text-white px-3 py-1 rounded-full text-xs">Building Relationships</span>
-                </div>
-            </div>
-        </section>
-    );
+function AboutHero() {
+  return (
+    <section className="grid items-center gap-10 rounded-3xl border border-slate-700 bg-gradient-to-br from-slate-900 via-slate-900 to-blue-950/70 p-6 shadow-2xl sm:p-10 lg:grid-cols-[auto_1fr]">
+      <img src="/images/Avatar.png" alt="Portrait of Will Fowlds" className="mx-auto h-40 w-40 rounded-2xl object-cover shadow-xl ring-1 ring-white/20 sm:h-52 sm:w-52 lg:mx-0" />
+      <div>
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-blue-300">Developer · Operator · Studio Founder</p>
+        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">Building thoughtful systems and memorable interactive experiences.</h1>
+        <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">
+          I&apos;m <strong className="text-white">Will Fowlds</strong>, a developer and the founder of Echelon Interactive Studio in Invercargill, New Zealand. I combine operational discipline, technical curiosity, and a love of game development to create focused, systems-driven work.
+        </p>
+        <div className="mt-7 flex flex-wrap gap-3">
+          <Link to="/projects" className="rounded-lg bg-blue-500 px-5 py-3 font-semibold text-white shadow-lg shadow-blue-950/40 transition hover:bg-blue-400">Explore projects</Link>
+          <Link to="/contact" className="rounded-lg border border-slate-500 px-5 py-3 font-semibold text-white transition hover:border-blue-300 hover:bg-white/10">Start a conversation</Link>
+          <a href="/documents/Resume.docx" download className="rounded-lg px-5 py-3 font-semibold text-blue-200 underline decoration-blue-400 underline-offset-4 transition hover:text-white">Download résumé</a>
+        </div>
+      </div>
+    </section>
+  );
 }
 
-function PersonalitySection() {
-    return (
-        <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-2 text-white">Personality & Strengths</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
-                                <div className="bg-gray-800 rounded p-4 text-white">
-                                    <b>INTP:</b> Introverted, Analytic, and Strategic.
-                                    <div className="mt-2 space-y-2">
-                                        <SkillBalanceBar LeftSkill="Extrovert" RightSkill="Introvert" value={80} />
-                                        <SkillBalanceBar LeftSkill="Sensing" RightSkill="Intuitive" value={60} />
-                                        <SkillBalanceBar LeftSkill="Thinking" RightSkill="Feeling" value={20} />
-                                        <SkillBalanceBar LeftSkill="Judging" RightSkill="Perceiving" value={70} />
-                                    </div>
-                                </div>
-                                <div className="bg-gray-800 rounded p-4 text-white">
-                                    <b>Unconventional Leadership Style:</b> Promote "think smart", innovation and open communication. Empower teams with responsibility and a long-term strategic vision. Build trust and rapport with team members.
-                                    <div className="mt-2 space-y-2">
-                                        <SkillBalanceBar LeftSkill="Technical" RightSkill="Non-Technical" value={70} />
-                                        <SkillBalanceBar LeftSkill="Groups" RightSkill="One-on-One" value={70} />
-                                        <SkillBalanceBar LeftSkill="Creative" RightSkill="Analytical" value={50} />
-                                        <SkillBalanceBar LeftSkill="Small talk" RightSkill="Deep talk" value={80} />
-                                    </div>
-                                </div>
-                                <div className="bg-gray-800 rounded p-4 text-white">
-                                    <b>Strengths:</b>
-                                    <ul className="list-disc ml-5 mt-2">
-                                        <li>Creative problem solver</li>
-                                        <li>Analytical thinking</li>
-                                        <li>Objective decision making</li>
-                                    </ul>
-                                </div>
-                                <div className="bg-gray-800 rounded p-4 text-white">
-                                    <b>Weaknesses:</b>
-                                    <ul className="list-disc ml-5 mt-2">
-                                        <li>Social awkwardness</li>
-                                        <li>Struggle to verbally articulate ideas</li>
-                                        <li>Overanalysis (analysis paralysis)</li>
-                                    </ul>
-                                </div>
-                            </div>
-        </section>
-    );
+function CredibilityStrip() {
+  const facts = [
+    ['Based in', 'Invercargill, New Zealand'],
+    ['Core focus', 'Games and interactive systems'],
+    ['Studio', 'Echelon Interactive Studio'],
+    ['Approach', 'Structured, curious, and accountable'],
+  ];
+
+  return (
+    <section className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4" aria-label="Professional summary">
+      {facts.map(([label, value]) => (
+        <div key={label} className="rounded-2xl border border-slate-700 bg-slate-900/80 p-5 shadow-lg">
+          <p className="text-xs font-semibold uppercase tracking-widest text-blue-300">{label}</p>
+          <p className="mt-2 font-semibold leading-6 text-white">{value}</p>
+        </div>
+      ))}
+    </section>
+  );
 }
 
-// Update about me with Current job/ Title, 
-// Moved to TechSlider: Confirm Technology Exposure information is accurate and up to date
-// Determine if Grades is appropriate to include
+function ProfessionalStory() {
+  return (
+    <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]" aria-labelledby="professional-story-heading">
+      <div className="rounded-2xl border border-slate-700 bg-slate-900 p-6 sm:p-8">
+        <p className="text-sm font-semibold uppercase tracking-widest text-blue-300">The short version</p>
+        <h2 id="professional-story-heading" className="mt-2 text-3xl font-bold text-white">A technical career shaped by responsibility.</h2>
+        <div className="mt-5 space-y-4 text-base leading-8 text-slate-300">
+          <p>By day, I work as an Operator for Lockheed Martin Space in a high-responsibility environment where precision, system awareness, and decision-making under pressure matter.</p>
+          <p>Alongside that role, I am building a second career in development. I specialise in C#, Unity, React, and interactive systems, using Echelon Interactive Studio to turn ideas into playable and useful experiences.</p>
+          <p>I care about clear structure, thoughtful design, and continuous improvement. My goal is to make ambitious ideas easier to understand, build, and experience.</p>
+        </div>
+      </div>
+      <div className="rounded-2xl border border-blue-900/70 bg-blue-950/40 p-6 sm:p-8">
+        <p className="text-sm font-semibold uppercase tracking-widest text-blue-300">What I bring</p>
+        <ul className="mt-5 space-y-5 text-slate-200">
+          <li><strong className="text-white">Clarity:</strong> translating complex goals into practical plans.</li>
+          <li><strong className="text-white">Ownership:</strong> carrying work from concept and documentation through to delivery.</li>
+          <li><strong className="text-white">Curiosity:</strong> continually learning across software, games, cloud, and emerging technology.</li>
+          <li><strong className="text-white">Perspective:</strong> combining technical work with real operational and leadership experience.</li>
+        </ul>
+      </div>
+    </section>
+  );
+}
 
-function EducationMilitaryGrid() {
-    return (
-        <section className="mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Education */}
-                <div className="bg-gray-800 rounded p-6">
-                    <h2 className="text-2xl font-semibold mb-2 text-white">Education</h2>
-                    <ul className="list-disc ml-5 text-white">
-                        {/* <li>2005: First year student in Bachelors of Information Technology at Otago Polytechnic</li> */}
-                        {/* <li>2009 - 2019: Numerous Military and Leadership Courses
-                            <ul className="list-disc ml-5">
-                                <li>Blanchards Leadership Development Framework</li>
-                                <li>NZDF Lead Self/Teams/Leaders Development Programmes</li>
-                            </ul>
-                        </li> */}
-                        <li>2012: Blanchards Leadership Development Framework</li>
-                        <li>2017: NZDF Lead Self/Teams/Leaders Development Programmes</li>
-                        <li>2021: Level 4 Certificate in Small Business Management at Southern Institute of Technology</li>
-                        <li>2022: Level 5, 6 papers from a Software Engineering Degree at Media Design School</li>
-                        <li>2023-2025: Bachelors of Information Technology at Southern Institute of Technology</li>
-                    </ul>
-                </div>
-                {/* Military */}
-                <div className="bg-gray-800 rounded p-6">
-                    <h2 className="text-2xl font-semibold mb-2 text-white">Military Experience</h2>
-                    <ul className="list-disc ml-5 text-white">
-                        <li>2009: Joined The Royal New Zealand Navy as a Communications Analyst/Electronic Warfare Specialist</li>
-                        <li>2014: Promoted to Leading Communications Analyst</li>
-                        <li>2016: Received High Duties Acknowledgement</li>
-                    </ul>
-                    <div className="mt-2 text-base text-white">
-                        <p>Operation deployments to the Middle East, supporting NZDF and Coalition Forces. UNCLASS assignments included:</p>
-                        <ul className="list-disc ml-5">
-                            <li><strong>Counter Piracy and Narcotics</strong> <a href="https://www.nzdf.mil.nz/media-centre/news/patrolling-the-seas/" className="text-blue-400" target="_blank" rel="noopener noreferrer">Operation TIKI</a></li>
-                            <li><a href="https://www.nzdf.mil.nz/media-centre/news/patrolling-the-seas/" className="text-blue-400" target="_blank" rel="noopener noreferrer">Operation TAKAPU</a></li>
-                            <li><strong>Counter Terrorism</strong> <a href="https://www.defence.gov.au/defence-activities/operations/global-operations/okra" className="text-blue-400" target="_blank" rel="noopener noreferrer">Operation OKRA</a></li>
-                            <li><a href="https://www.defence.govt.nz/assets/publications/NZ-Military-Contribution-to-Defeat-ISIS-in-Iraq.pdf" className="text-blue-400" target="_blank" rel="noopener noreferrer">Operation MANAWA</a></li>
-                            <li><strong>Hostage Recovery</strong> Operation RAUPO</li>
-                        </ul>
-                        <p className="mt-2">While I am proud of my service, I remain deeply grateful to those who made the ultimate sacrifice in the line of duty. 
-                            Their courage and commitment will never be forgotten. May peace prevail in the Middle East. Inshallah.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+function StrengthsSection() {
+  return (
+    <section aria-labelledby="strengths-heading">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-widest text-blue-300">Working strengths</p>
+        <h2 id="strengths-heading" className="mt-2 text-3xl font-bold text-white">How I approach difficult work</h2>
+        <p className="mt-3 text-slate-300">These are practical strengths developed through projects, leadership, technical work, and operational experience.</p>
+      </div>
+      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        {strengths.map((strength) => (
+          <article key={strength.title} className="rounded-2xl border border-slate-700 bg-slate-800/80 p-6">
+            <h3 className="text-xl font-semibold text-white">{strength.title}</h3>
+            <p className="mt-2 leading-7 text-slate-300">{strength.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function EducationSection() {
+  return (
+    <section className="rounded-2xl border border-slate-700 bg-slate-900 p-6 sm:p-8" aria-labelledby="education-heading">
+      <p className="text-sm font-semibold uppercase tracking-widest text-blue-300">Learning foundation</p>
+      <h2 id="education-heading" className="mt-2 text-3xl font-bold text-white">Education and development</h2>
+      <ul className="mt-5 grid gap-3 text-slate-300 sm:grid-cols-2">
+        <li><strong className="text-white">2012:</strong> Blanchards Leadership Development Framework</li>
+        <li><strong className="text-white">2017:</strong> NZDF Lead Self, Teams, and Leaders programmes</li>
+        <li><strong className="text-white">2021:</strong> Level 4 Certificate in Small Business Management, Southern Institute of Technology</li>
+        <li><strong className="text-white">2022:</strong> Level 5 and 6 Software Engineering papers, Media Design School</li>
+        <li><strong className="text-white">2023–2025:</strong> Bachelor of Information Technology, Southern Institute of Technology</li>
+      </ul>
+    </section>
+  );
+}
+
+function MilitaryExperience() {
+  return (
+    <section className="rounded-3xl border border-amber-900/60 bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/30 p-6 sm:p-10" aria-labelledby="military-heading">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-300">Military experience</p>
+        <h2 id="military-heading" className="mt-2 text-3xl font-bold text-white">Service, operations, and perspective</h2>
+        <p className="mt-4 leading-8 text-slate-300">This section records the operational background that continues to influence how I communicate, assess risk, lead, and perform under pressure.</p>
+      </div>
+      <div className="mt-8 grid gap-8 lg:grid-cols-2">
+        <div>
+          <h3 className="text-xl font-semibold text-white">Service history</h3>
+          <ul className="mt-4 space-y-3 text-slate-300">
+            <li><strong className="text-white">2009:</strong> Joined the Royal New Zealand Navy as a Communications Analyst / Electronic Warfare Specialist.</li>
+            <li><strong className="text-white">2014:</strong> Promoted to Leading Communications Analyst.</li>
+            <li><strong className="text-white">2016:</strong> Received a High Duties Acknowledgement.</li>
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold text-white">Operational assignments</h3>
+          <p className="mt-4 text-slate-300">Deployments to the Middle East supported NZDF and Coalition Forces. UNCLASS assignments included:</p>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-slate-300">
+            <li><strong className="text-white">Counter Piracy and Narcotics:</strong> <a href="https://www.nzdf.mil.nz/media-centre/news/patrolling-the-seas/" className="text-blue-300 underline" target="_blank" rel="noopener noreferrer">Operation TIKI</a></li>
+            <li><a href="https://www.nzdf.mil.nz/media-centre/news/patrolling-the-seas/" className="text-blue-300 underline" target="_blank" rel="noopener noreferrer">Operation TAKAPU</a></li>
+            <li><strong className="text-white">Counter Terrorism:</strong> <a href="https://www.defence.gov.au/defence-activities/operations/global-operations/okra" className="text-blue-300 underline" target="_blank" rel="noopener noreferrer">Operation OKRA</a></li>
+            <li><a href="https://www.defence.govt.nz/assets/publications/NZ-Military-Contribution-to-Defeat-ISIS-in-Iraq.pdf" className="text-blue-300 underline" target="_blank" rel="noopener noreferrer">Operation MANAWA</a></li>
+            <li><strong className="text-white">Hostage Recovery:</strong> Operation RAUPO</li>
+          </ul>
+        </div>
+      </div>
+      <div className="mt-8 border-t border-amber-900/60 pt-8">
+        <h3 className="text-xl font-semibold text-white">Personal perspective</h3>
+        <p className="mt-3 max-w-4xl leading-8 text-slate-300">While I am proud of my service, I remain deeply grateful to those who made the ultimate sacrifice in the line of duty. Their courage and commitment will never be forgotten. May peace prevail in the Middle East. Inshallah.</p>
+      </div>
+    </section>
+  );
 }
 
 function CoinCollectionSection() {
-    return (
-        <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-2 text-white">Coin Collection</h2>
-            <div className="flex justify-center items-center w-full py-4">
-                <div className="w-full max-w-2xl md:max-w-3xl lg:max-w-4xl px-2 md:px-6">
-                    <Coinstand />
-                </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-                <div className="bg-gray-700 p-4 rounded text-white">
-                    <p>United States Pentagon September 11 Challenge Coin. Sparked my interest in Military and Intelligence.</p>
-                </div>
-                <div className="bg-gray-700 p-4 rounded text-white">
-                    <p>New Zealand Defence Force Veteran Challenge Coin. Design matches the official veteran pin.</p>
-                </div>
-                <div className="bg-gray-700 p-4 rounded text-white">
-                    <p>Government Communications Security Bureau Challenge Coin. Presented by colleagues.</p>
-                </div>
-                <div className="bg-gray-700 p-4 rounded text-white">
-                    <p>Director Support to Military Operations Australia Challenge Coin. Presented by Unit Commander for Operation OKRA.</p>
-                </div>
-                <div className="bg-gray-700 p-4 rounded text-white">
-                    <p>Director Support to Military Operations New Zealand Challenge Coin. Presented by the Unit Commander.</p>
-                </div>
-                <div className="bg-gray-700 p-4 rounded text-white">
-                    <p>Australian Signals Directorate Challenge Coin. Presented at the end of my Tour of Duty for Operation OKRA.</p>
-                </div>
-                <div className="bg-gray-700 p-4 rounded text-white">
-                    <p>Rear Admiral John Martin Chief of Navy Challenge Coin. Presented after briefing on NZDF's counter narcotics operations.</p>
-                </div>
-                <div className="bg-gray-700 p-4 rounded text-white">
-                    <p>Naval Operations Support Unit Challenge Coin. Presented by the Unit Commander.</p>
-                </div>
-                <div className="bg-gray-700 p-4 rounded text-white">
-                    <p>1st Infantry Battalion Challenge Coin. Purchased to commemorate personnel Killed in Action in Afghanistan.</p>
-                </div>
-            </div>
-        </section>
-    );
+  return (
+    <section className="mb-8" aria-labelledby="coin-collection-heading">
+      <h2 id="coin-collection-heading" className="text-3xl font-bold text-white">Coin collection</h2>
+      <div className="flex w-full items-center justify-center py-4">
+        <div className="w-full max-w-2xl px-2 md:max-w-3xl md:px-6 lg:max-w-4xl">
+          <Coinstand />
+        </div>
+      </div>
+      <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="rounded bg-gray-700 p-4 text-white"><p>United States Pentagon September 11 Challenge Coin. Sparked my interest in Military and Intelligence.</p></div>
+        <div className="rounded bg-gray-700 p-4 text-white"><p>New Zealand Defence Force Veteran Challenge Coin. Design matches the official veteran pin.</p></div>
+        <div className="rounded bg-gray-700 p-4 text-white"><p>Government Communications Security Bureau Challenge Coin. Presented by colleagues.</p></div>
+        <div className="rounded bg-gray-700 p-4 text-white"><p>Director Support to Military Operations Australia Challenge Coin. Presented by Unit Commander for Operation OKRA.</p></div>
+        <div className="rounded bg-gray-700 p-4 text-white"><p>Director Support to Military Operations New Zealand Challenge Coin. Presented by the Unit Commander.</p></div>
+        <div className="rounded bg-gray-700 p-4 text-white"><p>Australian Signals Directorate Challenge Coin. Presented at the end of my Tour of Duty for Operation OKRA.</p></div>
+        <div className="rounded bg-gray-700 p-4 text-white"><p>Rear Admiral John Martin Chief of Navy Challenge Coin. Presented after briefing on NZDF&apos;s counter narcotics operations.</p></div>
+        <div className="rounded bg-gray-700 p-4 text-white"><p>Naval Operations Support Unit Challenge Coin. Presented by the Unit Commander.</p></div>
+        <div className="rounded bg-gray-700 p-4 text-white"><p>1st Infantry Battalion Challenge Coin. Purchased to commemorate personnel Killed in Action in Afghanistan.</p></div>
+      </div>
+    </section>
+  );
 }
 
-function HobbiesSection() {
-    return (
-        <section className="mb-8">
-            <h2 className="text-2xl font-semibold mb-2 text-white">Interests & Hobbies</h2>
-            <p className="text-white">A short section about hobbies, interests, or what drives you. Helps visitors connect with you on a personal level.</p>
-        </section>
-    );
+function ClosingCallToAction() {
+  return (
+    <section className="rounded-3xl border border-blue-700/60 bg-gradient-to-r from-blue-700 to-indigo-800 p-8 text-center shadow-2xl sm:p-10">
+      <h2 className="text-3xl font-bold text-white">Have a project, game idea, or collaboration in mind?</h2>
+      <p className="mx-auto mt-3 max-w-2xl leading-7 text-blue-100">I&apos;m always interested in thoughtful technical challenges, creative partnerships, and opportunities to build something useful.</p>
+      <div className="mt-6 flex flex-wrap justify-center gap-3">
+        <Link to="/projects" className="rounded-lg bg-white px-5 py-3 font-semibold text-blue-800 transition hover:bg-blue-50">View projects</Link>
+        <Link to="/contact" className="rounded-lg border border-white/70 px-5 py-3 font-semibold text-white transition hover:bg-white/10">Contact me</Link>
+        <a href="/documents/Resume.docx" download className="rounded-lg px-5 py-3 font-semibold text-white underline underline-offset-4">Download résumé</a>
+      </div>
+    </section>
+  );
 }
 
 export default function About() {
-    return (
-        <div className="max-w-5xl mx-auto px-4 py-8">
-            <AboutSummary />
-            <a 
-                href="/documents/Resume.docx" 
-                download 
-                className="inline-block"
-              >
-                <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
-                  Download Resume
-                </button>
-            </a>
-
-            {/* <TechSlider />
-            <Education /> */}
-
-            <PersonalitySection />
-            <EducationMilitaryGrid />
-            {/* <a 
-                href="/documents/Resume.docx" 
-                download 
-                className="inline-block"
-              >
-                <button className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded">
-                  Download Resume
-                </button>
-              </a> */}
-            <CoinCollectionSection />
-            {/* <HobbiesSection /> */}
-        </div>
-    );
+  return (
+    <div className="min-h-screen bg-slate-950 px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl space-y-12">
+        <AboutHero />
+        <CredibilityStrip />
+        <TechSlider />
+        <ProfessionalStory />
+        <StrengthsSection />
+        <EducationSection />
+        <MilitaryExperience />
+        <CoinCollectionSection />
+        <ClosingCallToAction />
+      </div>
+    </div>
+  );
 }

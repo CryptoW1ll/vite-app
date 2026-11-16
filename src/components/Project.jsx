@@ -2,13 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Project() {
+  const assetPath = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
   const projectDetails = [
     {
       id: 1,
       name: "Farm Watch",
       description:
         "Farm Watch is a 2D top-down tower defense game where you must defend against waves of mutated pests who have come to attack you and destroy your home along with your crops.",
-      image: "./Project_FarmWatch.png",
+      image: assetPath("/Project_FarmWatch.png"),
       link: "https://defendable-potato.itch.io/farm-watch",
       responsibility: "I was the Lead Developer alongside one other developer. I concentrated on the core mechanics where the other developer worked on the UI. The team collectively worked on game design, level design. I worked closely with the Artist's Team Lead, and project manager to ensure that the game was being developed in a timely manner.",
       team: "2 Developers, 3 Artists, 1 Project Manager",
@@ -19,9 +20,9 @@ export default function Project() {
       name: "Bricktastic",
       description:
         "Bricktastic is a fun and engaging block-breaking game with unique power-ups and levels.",
-      image: "/Project_Bricktastic.png",
+      image: assetPath("/Project_Bricktastic.png"),
       link: "https://cryptow1ll.itch.io/bricktastic",
-      responsibility: "I Project Managed this project, which was an entry level game development paper. We chose a relatively simple concept to work on a limited the scope of the project. I managed the project schedule and the documentation. A lesson learned from this project not skip technical design documentation no matter how simple the project is.",
+      responsibility: "I project-managed this entry-level game development project. We chose a focused concept to keep the scope achievable. I managed the schedule and documentation, and learned that technical design documentation matters even for simple projects.",
       team: "2 Developers",
       length: "4 months",
     },
@@ -30,9 +31,9 @@ export default function Project() {
       name: "Fugitive Apprehension Task Force",
       description:
         "An action-packed game where you track and capture fugitives in high-intensity missions.",
-      image: "/images/Project_FugitiveApprehensionTaskForce(WIP).png",
+      image: assetPath("/images/Project_FugitiveApprehensionTaskForce(WIP).png"),
       link: "/fatf",
-      responsibility: "I have chosen to understake the project as a solo developer. Please click the link below to see the project in its current state.",
+      responsibility: "I am undertaking this project as a solo developer. Visit the project page to see its current state.",
       team: "Solo Developer",
       length: "9 months"
 
@@ -138,7 +139,7 @@ export default function Project() {
                   GitHub Stats
                 </h3>
                 <img
-                  src="https://github-readme-stats.vercel.app/api?username=cryptow1ll&show_icons=true&theme=default"
+                  src="https://github-stats-extended.vercel.app/api?username=cryptow1ll&show_icons=true&theme=default"
                   alt="GitHub stats"
                   loading="lazy"
                   className="w-full object-contain"
