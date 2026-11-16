@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 p-4 text-center text-white">
       <div className="mx-auto max-w-screen-xl px-4 text-center sm:px-6 lg:px-8">
-        <p className="mb-2 text-sm">© {currentYear} Echelon Interactive Studio. All rights reserved.</p>
+        <p className="mb-2 text-sm">© {currentYear} Echelon Studio Limited. All rights reserved.</p>
         <div className="flex flex-wrap justify-center gap-2 text-sm">
           <Link to="/privacy" className="text-gray-400 hover:text-white">Privacy Policy</Link>
           <Link to="/terms" className="text-gray-400 hover:text-white">Terms of Service</Link>

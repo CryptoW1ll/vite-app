@@ -3,32 +3,32 @@ import { useLocation } from 'react-router-dom';
 
 const PAGE_META = {
   '/': {
-    title: 'Echelon Interactive Studio | Games, Technology, and Creative Projects',
-    description: 'Echelon Interactive Studio creates games, interactive experiences, and technology projects from Invercargill, New Zealand.',
+    title: 'Echelon Studio | Games, Technology, and Creative Projects',
+    description: 'Echelon Studio creates games, interactive experiences, and technology projects from Invercargill, New Zealand.',
   },
   '/about': {
-    title: 'About | Echelon Interactive Studio',
-    description: 'Learn about Echelon Interactive Studio, its experience, values, and goals.',
+    title: 'About | Echelon Studio',
+    description: 'Learn about Echelon Studio, its experience, values, and goals.',
   },
   '/projects': {
-    title: 'Projects | Echelon Interactive Studio',
-    description: 'Explore games and interactive projects developed by Echelon Interactive Studio.',
+    title: 'Projects | Echelon Studio',
+    description: 'Explore games and interactive projects developed by Echelon Studio.',
   },
   '/fatf': {
-    title: 'Fugitive Apprehension Task Force | Echelon Interactive Studio',
+    title: 'Fugitive Apprehension Task Force | Echelon Studio',
     description: 'Discover the gameplay, features, and development of Fugitive Apprehension Task Force.',
   },
   '/contact': {
-    title: 'Contact | Echelon Interactive Studio',
-    description: 'Contact Echelon Interactive Studio about game development, technology, or collaboration.',
+    title: 'Contact | Echelon Studio',
+    description: 'Contact Echelon Studio about game development, technology, or collaboration.',
   },
   '/privacy': {
-    title: 'Privacy Policy | Echelon Interactive Studio',
-    description: 'Read how Echelon Interactive Studio handles contact information, analytics, and advertising data.',
+    title: 'Privacy Policy | Echelon Studio Limited',
+    description: 'Read how Echelon Studio Limited handles contact information, analytics, and advertising data.',
   },
   '/terms': {
-    title: 'Terms of Service | Echelon Interactive Studio',
-    description: 'Read the terms for using the Echelon Interactive Studio website.',
+    title: 'Terms of Service | Echelon Studio Limited',
+    description: 'Read the terms for using the Echelon Studio website.',
   },
 };
 
@@ -59,8 +59,8 @@ export default function SiteMeta() {
     const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
     const routePath = (basePath && pathname.startsWith(basePath) ? pathname.slice(basePath.length) : pathname) || '/';
     const metadata = PAGE_META[routePath] || {
-      title: 'Page Not Found | Echelon Interactive Studio',
-      description: 'The requested Echelon Interactive Studio page could not be found.',
+      title: 'Page Not Found | Echelon Studio',
+      description: 'The requested Echelon Studio page could not be found.',
     };
     const siteUrl = import.meta.env.VITE_SITE_URL || window.location.origin;
     const canonicalUrl = new URL(pathname, `${siteUrl.replace(/\/$/, '')}/`).toString();

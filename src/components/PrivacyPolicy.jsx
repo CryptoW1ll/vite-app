@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
       <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Privacy Policy</h1>
       <p className="mt-4 text-base text-gray-600">Last updated: 17 November 2026</p>
       <section className="mt-8 space-y-6 text-lg leading-8">
-        <p>Echelon Interactive Studio uses this website to share information about its projects and receive enquiries.</p>
+        <p>Echelon Studio Limited uses this website to share information about its projects and receive enquiries.</p>
         <h2 className="text-2xl font-bold tracking-tight">Information you provide</h2>
         <p>If you use the contact form, we receive the name, email address, and message you submit so we can respond to your enquiry.</p>
         <h2 className="text-2xl font-bold tracking-tight">Optional services</h2>

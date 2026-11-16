@@ -29,7 +29,7 @@ function AboutHero() {
         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-blue-300">Developer · Operator · Studio Founder</p>
         <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">Building thoughtful systems and memorable interactive experiences.</h1>
         <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">
-          I&apos;m <strong className="text-white">Will Fowlds</strong>, a developer and the founder of Echelon Interactive Studio in Invercargill, New Zealand. I combine operational discipline, technical curiosity, and a love of game development to create focused, systems-driven work.
+          I&apos;m <strong className="text-white">Will Fowlds</strong>, a developer and the founder of Echelon Studio in Invercargill, New Zealand. I combine operational discipline, technical curiosity, and a love of game development to create focused, systems-driven work.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <Link to="/projects" className="rounded-lg bg-blue-500 px-5 py-3 font-semibold text-white shadow-lg shadow-blue-950/40 transition hover:bg-blue-400">Explore projects</Link>
@@ -45,7 +45,7 @@ function CredibilityStrip() {
   const facts = [
     ['Based in', 'Invercargill, New Zealand'],
     ['Core focus', 'Games and interactive systems'],
-    ['Studio', 'Echelon Interactive Studio'],
+    ['Studio', 'Echelon Studio'],
     ['Approach', 'Structured, curious, and accountable'],
   ];
 
@@ -69,7 +69,7 @@ function ProfessionalStory() {
         <h2 id="professional-story-heading" className="mt-2 text-3xl font-bold text-white">A technical career shaped by responsibility.</h2>
         <div className="mt-5 space-y-4 text-base leading-8 text-slate-300">
           <p>By day, I work as an Operator for Lockheed Martin Space in a high-responsibility environment where precision, system awareness, and decision-making under pressure matter.</p>
-          <p>Alongside that role, I am building a second career in development. I specialise in C#, Unity, React, and interactive systems, using Echelon Interactive Studio to turn ideas into playable and useful experiences.</p>
+          <p>Alongside that role, I am building a second career in development. I specialise in C#, Unity, React, and interactive systems, using Echelon Studio to turn ideas into playable and useful experiences.</p>
           <p>I care about clear structure, thoughtful design, and continuous improvement. My goal is to make ambitious ideas easier to understand, build, and experience.</p>
         </div>
       </div>

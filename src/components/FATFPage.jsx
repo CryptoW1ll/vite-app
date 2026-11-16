@@ -44,8 +44,8 @@ export default function FATFPage() {
           <aside className="flex h-fit flex-col gap-4 rounded bg-[#2a475e] p-6 text-sm shadow-lg">
             <img src="/images/fatf-header.png" alt="Fugitive Apprehension Task Force" className="mb-4 rounded" />
             <div className="mt-2 border-t border-[#3b4252] pt-4">
-              <p><strong className="text-white">DEVELOPER:</strong> Echelon Interactive Studio</p>
-              <p><strong className="text-white">PUBLISHER:</strong> Echelon Interactive Studio</p>
+              <p><strong className="text-white">DEVELOPER:</strong> Echelon Studio Limited</p>
+              <p><strong className="text-white">PUBLISHER:</strong> Echelon Studio Limited</p>
               <p><strong className="text-white">RELEASE DATE:</strong> 11.11.2025</p>
               <p><strong className="text-white">RECENT REVIEWS:</strong> Coming Soon</p>
               <p><strong className="text-white">ALL REVIEWS:</strong> Coming Soon</p>

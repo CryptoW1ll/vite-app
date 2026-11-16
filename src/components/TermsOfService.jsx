@@ -9,9 +9,9 @@ export default function TermsOfService() {
       <section className="mt-8 space-y-6 text-lg leading-8">
         <p>By using this website, you agree to use it lawfully and respectfully.</p>
         <h2 className="text-2xl font-bold tracking-tight">Content</h2>
-        <p>Project descriptions, images, videos, and other materials are provided for information and demonstration. Ownership remains with Echelon Interactive Studio or the credited rights holder.</p>
+        <p>Project descriptions, images, videos, and other materials are provided for information and demonstration. Ownership remains with Echelon Studio Limited or the credited rights holder.</p>
         <h2 className="text-2xl font-bold tracking-tight">External services and links</h2>
-        <p>This site may link to third-party services. Echelon Interactive Studio is not responsible for the availability or content of external sites.</p>
+        <p>This site may link to third-party services. Echelon Studio Limited is not responsible for the availability or content of external sites.</p>
         <h2 className="text-2xl font-bold tracking-tight">Availability</h2>
         <p>We may change, suspend, or remove website content without notice. The site is provided on an as-available basis.</p>
         <h2 className="text-2xl font-bold tracking-tight">Contact</h2>
